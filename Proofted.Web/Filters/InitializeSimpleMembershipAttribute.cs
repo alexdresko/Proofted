@@ -25,11 +25,11 @@ namespace Proofted.Web.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<UserDbContext>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    using (var context = new UserDbContext())
                     {
                         if (!context.Database.Exists())
                         {

@@ -9,6 +9,10 @@ using System.Web.Routing;
 
 namespace Proofted.Web
 {
+    using System.Data.Entity;
+
+    using Proofted.Web.Models;
+
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
 
@@ -16,6 +20,8 @@ namespace Proofted.Web
     {
         protected void Application_Start()
         {
+            //Database.SetInitializer<UserDbContext>(null);
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
