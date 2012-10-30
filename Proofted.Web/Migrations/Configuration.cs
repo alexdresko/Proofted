@@ -5,7 +5,7 @@ namespace Proofted.Web.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Proofted.Web.Models.ProoftedDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<Proofted.Web.Models.ProoftedDbContext>
     {
         public Configuration()
         {

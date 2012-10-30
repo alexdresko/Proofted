@@ -10,7 +10,9 @@ using System.Web.Routing;
 namespace Proofted.Web
 {
     using System.Data.Entity;
+    using System.Web.DynamicData;
 
+    using Proofted.Web.App_Start;
     using Proofted.Web.Models;
 
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -18,9 +20,16 @@ namespace Proofted.Web
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        static MvcApplication()
+        {
+            DefaultModel = new MetaModel();
+        }
+
+        public static MetaModel DefaultModel { get; private set; }
+
         protected void Application_Start()
         {
-            //Database.SetInitializer<UserDbContext>(null);
+            DynamicData.Register(RouteTable.Routes);
 
             AreaRegistration.RegisterAllAreas();
 

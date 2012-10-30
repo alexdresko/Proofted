@@ -21,11 +21,12 @@ namespace Proofted.Web.Filters
             LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
         }
 
-        private class SimpleMembershipInitializer
+        public class SimpleMembershipInitializer
         {
             public SimpleMembershipInitializer()
             {
                 Database.SetInitializer<UserDbContext>(null);
+                
 
                 try
                 {
@@ -37,8 +38,9 @@ namespace Proofted.Web.Filters
                             ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
                         }
                     }
+                    var security = new WebSecurityWrapper();
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    security.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {
