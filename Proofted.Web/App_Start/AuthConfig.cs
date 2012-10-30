@@ -7,6 +7,8 @@ using Proofted.Web.Models;
 
 namespace Proofted.Web
 {
+    using Proofted.Web.Core;
+
     public static class AuthConfig
     {
         public static void RegisterAuth()
@@ -22,11 +24,12 @@ namespace Proofted.Web
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //OAuthWebSecurity.RegisterFacebookClient(
-            //    appId: "",
-            //    appSecret: "");
+            var reg = new OAuthRegistrar(new OAuthWebSecurityWrapper());
 
-            //OAuthWebSecurity.RegisterGoogleClient();
+            reg.RegisterFacebookClient();
+
+
+            reg.RegisterGoogleClient();
         }
     }
 }

@@ -9,13 +9,28 @@ using System.Web.Routing;
 
 namespace Proofted.Web
 {
+    using System.Data.Entity;
+    using System.Web.DynamicData;
+
+    using Proofted.Web.App_Start;
+    using Proofted.Web.Models;
+
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        static MvcApplication()
+        {
+            DefaultModel = new MetaModel();
+        }
+
+        public static MetaModel DefaultModel { get; private set; }
+
         protected void Application_Start()
         {
+            DynamicData.Register(RouteTable.Routes);
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

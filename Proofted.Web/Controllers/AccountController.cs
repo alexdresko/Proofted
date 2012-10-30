@@ -35,7 +35,7 @@ namespace Proofted.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            if (ModelState.IsValid && _webSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
                 return RedirectToLocal(returnUrl);
             }
@@ -52,7 +52,7 @@ namespace Proofted.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            WebSecurity.Logout();
+            _webSecurity.Logout();
 
             return RedirectToAction("Index", "Home");
         }
@@ -79,8 +79,8 @@ namespace Proofted.Web.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
+                    _webSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    _webSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
@@ -93,6 +93,20 @@ namespace Proofted.Web.Controllers
             return View(model);
         }
 
+        private static IOAuthWebSecurity _oAuthWebSecurity { get; set; }
+        private static IWebSecurity _webSecurity { get; set; }
+        
+        public AccountController()
+            : this(new OAuthWebSecurityWrapper(), new WebSecurityWrapper())
+        {
+        }
+
+        public AccountController(IOAuthWebSecurity oAuthWebSecurity, IWebSecurity webSecurity)
+        {
+            _oAuthWebSecurity = oAuthWebSecurity;
+            _webSecurity = webSecurity;
+        }
+
         //
         // POST: /Account/Disassociate
 
@@ -100,7 +114,7 @@ namespace Proofted.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Disassociate(string provider, string providerUserId)
         {
-            string ownerAccount = OAuthWebSecurity.GetUserName(provider, providerUserId);
+            string ownerAccount = _oAuthWebSecurity.GetUserName(provider, providerUserId);
             ManageMessageId? message = null;
 
             // Only disassociate the account if the currently logged in user is the owner
@@ -109,10 +123,10 @@ namespace Proofted.Web.Controllers
                 // Use a transaction to prevent the user from deleting their last login credential
                 using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.Serializable }))
                 {
-                    bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-                    if (hasLocalAccount || OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name).Count > 1)
+                    bool hasLocalAccount = _oAuthWebSecurity.HasLocalAccount(_webSecurity.GetUserId(User.Identity.Name));
+                    if (hasLocalAccount || _oAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name).Count > 1)
                     {
-                        OAuthWebSecurity.DeleteAccount(provider, providerUserId);
+                        _oAuthWebSecurity.DeleteAccount(provider, providerUserId);
                         scope.Complete();
                         message = ManageMessageId.RemoveLoginSuccess;
                     }
@@ -132,7 +146,7 @@ namespace Proofted.Web.Controllers
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : "";
-            ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+            ViewBag.HasLocalPassword = _oAuthWebSecurity.HasLocalAccount(_webSecurity.GetUserId(User.Identity.Name));
             ViewBag.ReturnUrl = Url.Action("Manage");
             return View();
         }
@@ -144,7 +158,7 @@ namespace Proofted.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Manage(LocalPasswordModel model)
         {
-            bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+            bool hasLocalAccount = _oAuthWebSecurity.HasLocalAccount(_webSecurity.GetUserId(User.Identity.Name));
             ViewBag.HasLocalPassword = hasLocalAccount;
             ViewBag.ReturnUrl = Url.Action("Manage");
             if (hasLocalAccount)
@@ -155,7 +169,7 @@ namespace Proofted.Web.Controllers
                     bool changePasswordSucceeded;
                     try
                     {
-                        changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
+                        changePasswordSucceeded = _webSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
                     }
                     catch (Exception)
                     {
@@ -186,7 +200,7 @@ namespace Proofted.Web.Controllers
                 {
                     try
                     {
-                        WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
+                        _webSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
                         return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
                     }
                     catch (Exception e)
@@ -217,13 +231,13 @@ namespace Proofted.Web.Controllers
         [AllowAnonymous]
         public ActionResult ExternalLoginCallback(string returnUrl)
         {
-            AuthenticationResult result = OAuthWebSecurity.VerifyAuthentication(Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
+            AuthenticationResult result = _oAuthWebSecurity.VerifyAuthentication(Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
             if (!result.IsSuccessful)
             {
                 return RedirectToAction("ExternalLoginFailure");
             }
 
-            if (OAuthWebSecurity.Login(result.Provider, result.ProviderUserId, createPersistentCookie: false))
+            if (_oAuthWebSecurity.Login(result.Provider, result.ProviderUserId, createPersistentCookie: false))
             {
                 return RedirectToLocal(returnUrl);
             }
@@ -231,14 +245,14 @@ namespace Proofted.Web.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 // If the current user is logged in add the new account
-                OAuthWebSecurity.CreateOrUpdateAccount(result.Provider, result.ProviderUserId, User.Identity.Name);
+                _oAuthWebSecurity.CreateOrUpdateAccount(result.Provider, result.ProviderUserId, User.Identity.Name);
                 return RedirectToLocal(returnUrl);
             }
             else
             {
                 // User is new, ask for their desired membership name
-                string loginData = OAuthWebSecurity.SerializeProviderUserId(result.Provider, result.ProviderUserId);
-                ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(result.Provider).DisplayName;
+                string loginData = _oAuthWebSecurity.SerializeProviderUserId(result.Provider, result.ProviderUserId);
+                ViewBag.ProviderDisplayName = _oAuthWebSecurity.GetOAuthClientData(result.Provider).DisplayName;
                 ViewBag.ReturnUrl = returnUrl;
                 return View("ExternalLoginConfirmation", new RegisterExternalLoginModel { UserName = result.UserName, ExternalLoginData = loginData });
             }
@@ -255,7 +269,7 @@ namespace Proofted.Web.Controllers
             string provider = null;
             string providerUserId = null;
 
-            if (User.Identity.IsAuthenticated || !OAuthWebSecurity.TryDeserializeProviderUserId(model.ExternalLoginData, out provider, out providerUserId))
+            if (User.Identity.IsAuthenticated || !_oAuthWebSecurity.TryDeserializeProviderUserId(model.ExternalLoginData, out provider, out providerUserId))
             {
                 return RedirectToAction("Manage");
             }
@@ -263,7 +277,7 @@ namespace Proofted.Web.Controllers
             if (ModelState.IsValid)
             {
                 // Insert a new user into the database
-                using (UsersContext db = new UsersContext())
+                using (UserDbContext db = new UserDbContext())
                 {
                     UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // Check if user already exists
@@ -273,8 +287,8 @@ namespace Proofted.Web.Controllers
                         db.UserProfiles.Add(new UserProfile { UserName = model.UserName });
                         db.SaveChanges();
 
-                        OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
-                        OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
+                        _oAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
+                        _oAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
 
                         return RedirectToLocal(returnUrl);
                     }
@@ -285,7 +299,7 @@ namespace Proofted.Web.Controllers
                 }
             }
 
-            ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(provider).DisplayName;
+            ViewBag.ProviderDisplayName = _oAuthWebSecurity.GetOAuthClientData(provider).DisplayName;
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
@@ -304,17 +318,17 @@ namespace Proofted.Web.Controllers
         public ActionResult ExternalLoginsList(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return PartialView("_ExternalLoginsListPartial", OAuthWebSecurity.RegisteredClientData);
+            return PartialView("_ExternalLoginsListPartial", _oAuthWebSecurity.RegisteredClientData);
         }
 
         [ChildActionOnly]
         public ActionResult RemoveExternalLogins()
         {
-            ICollection<OAuthAccount> accounts = OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name);
+            ICollection<OAuthAccount> accounts = _oAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name);
             List<ExternalLogin> externalLogins = new List<ExternalLogin>();
             foreach (OAuthAccount account in accounts)
             {
-                AuthenticationClientData clientData = OAuthWebSecurity.GetOAuthClientData(account.Provider);
+                AuthenticationClientData clientData = _oAuthWebSecurity.GetOAuthClientData(account.Provider);
 
                 externalLogins.Add(new ExternalLogin
                 {
@@ -324,7 +338,7 @@ namespace Proofted.Web.Controllers
                 });
             }
 
-            ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+            ViewBag.ShowRemoveButton = externalLogins.Count > 1 || _oAuthWebSecurity.HasLocalAccount(_webSecurity.GetUserId(User.Identity.Name));
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
 
@@ -361,7 +375,7 @@ namespace Proofted.Web.Controllers
 
             public override void ExecuteResult(ControllerContext context)
             {
-                OAuthWebSecurity.RequestAuthentication(Provider, ReturnUrl);
+                _oAuthWebSecurity.RequestAuthentication(Provider, ReturnUrl);
             }
         }
 
