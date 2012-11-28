@@ -74,6 +74,7 @@ namespace Proofted.Web.Tests.Utilities
 
         public static void DeleteAndUpgradeDatabase(TestContext testContext)
         {
+            AppDomain.CurrentDomain.SetData("DataDirectory", @"d:\temp\");
             DeleteDatabase(testContext);
             SetDataDirectory(testContext);
             SetupSecurity(testContext);
@@ -87,11 +88,11 @@ namespace Proofted.Web.Tests.Utilities
 
         private static void SetupSecurity(TestContext testContext)
         {
-            //var security = new WebSecurityWrapper();
-            
+            var security = new WebSecurityWrapper();
 
-            //security.InitializeDatabaseConnection(
-            //    "DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+
+            security.InitializeDatabaseConnection(
+                "DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
 
             SetDataDirectory(testContext);
 

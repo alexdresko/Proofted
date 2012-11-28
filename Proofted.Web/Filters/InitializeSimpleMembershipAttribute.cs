@@ -38,7 +38,7 @@ namespace Proofted.Web.Filters
                             ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
                         }
                     }
-                    var security = new WebSecurityWrapper();
+                    var security = new WebSecurityWrapper2(new WebSecurityWrapper());
 
                     security.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
                 }

@@ -97,7 +97,7 @@ namespace Proofted.Web.Controllers
         private static IWebSecurity _webSecurity { get; set; }
         
         public AccountController()
-            : this(new OAuthWebSecurityWrapper(), new WebSecurityWrapper())
+            : this(new OAuthWebSecurityWrapper2(new OAuthWebSecurityWrapper()), new WebSecurityWrapper2(new WebSecurityWrapper()))
         {
         }
 
