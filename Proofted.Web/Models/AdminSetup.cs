@@ -2,6 +2,8 @@
 
 namespace Proofted.Web.Models
 {
+    using Proofted.Web.Core.Exceptions;
+
     public class AdminSetup
     {
         private const string _administrators = "Administrators";
@@ -37,12 +39,20 @@ namespace Proofted.Web.Models
             var admin = new webpages_Roles {RoleName = _administrators};
             context.webpages_Roles.Add(admin);
 
+            bool moreThanOneUserExists = context.UserProfiles.Count() != 1;
+
             var user = GetUserByName(context);
-            if (user != null)
+            if (user != null && !moreThanOneUserExists)
             {
                 user.webpages_Roles.Add(admin);
             }
+
             context.SaveChanges();
+
+            if (moreThanOneUserExists)
+            {
+                throw new CanNotCreateAdministratorException();
+            }
         }
 
         private UserProfile GetUserByName(UserDbContext context)

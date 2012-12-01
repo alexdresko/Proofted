@@ -175,14 +175,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DynamicData.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Core\Exceptions\CanNotCreateAdministratorException.cs" />
+    <Compile Include="Core\Exceptions\ProoftedException.cs" />
+    <Compile Include="Core\Exceptions\TooManyOAuthSettingsException.cs" />
     <Compile Include="Core\OAuthRegistrar.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\OAuthSettingsRepository.cs" />
-    <Compile Include="Core\ProoftedException.cs" />
-    <Compile Include="Core\TooManyOAuthSettingsException.cs" />
     <Compile Include="Data\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

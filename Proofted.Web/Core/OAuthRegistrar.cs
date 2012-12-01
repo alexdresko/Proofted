@@ -4,6 +4,8 @@ using Proofted.Web.Models;
 
 namespace Proofted.Web.Core
 {
+    using Proofted.Web.Core.Exceptions;
+
     public class OAuthRegistrar
     {
         #region Fields
