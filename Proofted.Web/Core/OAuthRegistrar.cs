@@ -1,15 +1,16 @@
+using System;
+using System.Collections.Generic;
+using Proofted.Web.Models;
+
 namespace Proofted.Web.Core
 {
-    using System;
-    using System.Collections.Generic;
-
-    using Proofted.Web.Models;
+    using Proofted.Web.Core.Exceptions;
 
     public class OAuthRegistrar
     {
         #region Fields
 
-        private readonly IOAuthWebSecurity oAuthWebSecurityWrapper;
+        private readonly IOAuthWebSecurity _oAuthWebSecurityWrapper;
 
         #endregion
 
@@ -17,7 +18,7 @@ namespace Proofted.Web.Core
 
         public OAuthRegistrar(IOAuthWebSecurity oAuthWebSecurityWrapper)
         {
-            this.oAuthWebSecurityWrapper = oAuthWebSecurityWrapper;
+            _oAuthWebSecurityWrapper = oAuthWebSecurityWrapper;
         }
 
         #endregion
@@ -30,7 +31,7 @@ namespace Proofted.Web.Core
             ExecuteIfValid(
                 settings,
                 "Facebook",
-                setting => (this.oAuthWebSecurityWrapper).RegisterFacebookClient(setting.AppId, setting.SecretKey));
+                setting => (_oAuthWebSecurityWrapper).RegisterFacebookClient(setting.AppId, setting.SecretKey));
         }
 
         #endregion
@@ -57,7 +58,7 @@ namespace Proofted.Web.Core
 
         public void RegisterGoogleClient()
         {
-            this.oAuthWebSecurityWrapper.RegisterGoogleClient();
+            _oAuthWebSecurityWrapper.RegisterGoogleClient();
         }
     }
 }

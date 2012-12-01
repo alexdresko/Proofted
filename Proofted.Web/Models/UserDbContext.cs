@@ -24,6 +24,17 @@ namespace Proofted.Web.Models
             }
         }
 
+        public static void DeleleAllObjects<TEntity>(DbSet<TEntity> objectSet,
+                                              IEnumerable<TEntity> objects)
+    where TEntity : class
+        {
+
+            foreach (var o in objects)
+            {
+                objectSet.Remove(o);
+            }
+        }
+
         public DbSet<webpages_Membership> webpages_Membership { get; set; }
         public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
         public DbSet<webpages_Roles> webpages_Roles { get; set; }

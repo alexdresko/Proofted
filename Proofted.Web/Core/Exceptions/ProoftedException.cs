@@ -1,4 +1,4 @@
-namespace Proofted.Web.Core
+namespace Proofted.Web.Core.Exceptions
 {
     using System;
 

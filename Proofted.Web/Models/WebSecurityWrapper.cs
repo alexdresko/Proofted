@@ -5,6 +5,7 @@
 
     using WebMatrix.WebData;
 
+
     public class WebSecurityWrapper : IWebSecurity
     {
         public bool Login(string userName, string password, bool persistCookie = false)
@@ -19,7 +20,7 @@
 
         public string CreateUserAndAccount(string userName, string password, object propertyValues = null, bool requireConfirmationToken = false)
         {
-            return WebSecurity.CreateUserAndAccount(userName, password, propertyValues);
+            return WebSecurity.CreateUserAndAccount(userName, password, propertyValues, requireConfirmationToken);
         }
 
         public int GetUserId(string userName)
