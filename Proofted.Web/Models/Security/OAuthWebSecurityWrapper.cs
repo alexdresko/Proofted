@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
-using DotNetOpenAuth.AspNet;
-using Microsoft.Web.WebPages.OAuth;
-
-namespace Proofted.Web.Models
+﻿namespace Proofted.Web.Models.Security
 {
+    using System.Collections.Generic;
+
+    using DotNetOpenAuth.AspNet;
+
+    using Microsoft.Web.WebPages.OAuth;
+
     public class OAuthWebSecurityWrapper : IOAuthWebSecurity
     {
         public string GetUserName(string providerName, string providerUserId)

@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Web.DynamicData;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.FieldTemplates
 {
-    public partial class DateTimeField : System.Web.DynamicData.FieldTemplateUserControl
+	using System.Web.UI;
+
+	public partial class DateTimeField : System.Web.DynamicData.FieldTemplateUserControl
     {
         public override Control DataControl
         {
             get
             {
-                return Literal1;
+                return this.Literal1;
             }
         }
 

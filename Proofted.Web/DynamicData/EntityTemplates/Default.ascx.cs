@@ -1,38 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.DynamicData;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.EntityTemplates
 {
-    public partial class DefaultEntityTemplate : System.Web.DynamicData.EntityTemplateUserControl
+	using System;
+	using System.Web.DynamicData;
+	using System.Web.UI;
+	using System.Web.UI.WebControls;
+
+	public partial class DefaultEntityTemplate : System.Web.DynamicData.EntityTemplateUserControl
     {
         private MetaColumn currentColumn;
 
         protected override void OnLoad(EventArgs e)
         {
-            foreach (MetaColumn column in Table.GetScaffoldColumns(Mode, ContainerType))
+            foreach (MetaColumn column in this.Table.GetScaffoldColumns(this.Mode, this.ContainerType))
             {
-                currentColumn = column;
+                this.currentColumn = column;
                 Control item = new _NamingContainer();
-                EntityTemplate1.ItemTemplate.InstantiateIn(item);
-                EntityTemplate1.Controls.Add(item);
+                this.EntityTemplate1.ItemTemplate.InstantiateIn(item);
+                this.EntityTemplate1.Controls.Add(item);
             }
         }
 
         protected void Label_Init(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.Text = currentColumn.DisplayName;
+            label.Text = this.currentColumn.DisplayName;
         }
 
         protected void DynamicControl_Init(object sender, EventArgs e)
         {
             DynamicControl dynamicControl = (DynamicControl)sender;
-            dynamicControl.DataField = currentColumn.Name;
+            dynamicControl.DataField = this.currentColumn.Name;
         }
 
         public class _NamingContainer : Control, INamingContainer { }

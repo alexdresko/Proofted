@@ -1,37 +1,33 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Web.DynamicData;
-using System.Web.Routing;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.Expressions;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.PageTemplates
 {
-    public partial class List : System.Web.UI.Page
+	using System;
+	using System.Web.DynamicData;
+	using System.Web.Routing;
+	using System.Web.UI.WebControls;
+
+	public partial class List : System.Web.UI.Page
     {
         protected MetaTable table;
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            table = DynamicDataRouteHandler.GetRequestMetaTable(Context);
-            GridView1.SetMetaTable(table, table.GetColumnValuesFromRoute(Context));
-            GridDataSource.EntityTypeFilter = table.EntityType.Name;
+            this.table = DynamicDataRouteHandler.GetRequestMetaTable(this.Context);
+            this.GridView1.SetMetaTable(this.table, this.table.GetColumnValuesFromRoute(this.Context));
+            this.GridDataSource.EntityTypeFilter = this.table.EntityType.Name;
 
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Title = table.DisplayName;
-            GridDataSource.Include = table.ForeignKeyColumnsNames;
+            this.Title = this.table.DisplayName;
+            this.GridDataSource.Include = this.table.ForeignKeyColumnsNames;
 
             // Disable various options if the table is readonly
-            if (table.IsReadOnly)
+            if (this.table.IsReadOnly)
             {
-                GridView1.Columns[0].Visible = false;
-                InsertHyperLink.Visible = false;
-                GridView1.EnablePersistedSelection = false;
+                this.GridView1.Columns[0].Visible = false;
+                this.InsertHyperLink.Visible = false;
+                this.GridView1.EnablePersistedSelection = false;
             }
         }
 
@@ -48,14 +44,14 @@ namespace Data2
 
         protected override void OnPreRenderComplete(EventArgs e)
         {
-            RouteValueDictionary routeValues = new RouteValueDictionary(GridView1.GetDefaultValues());
-            InsertHyperLink.NavigateUrl = table.GetActionPath(PageAction.Insert, routeValues);
+            RouteValueDictionary routeValues = new RouteValueDictionary(this.GridView1.GetDefaultValues());
+            this.InsertHyperLink.NavigateUrl = this.table.GetActionPath(PageAction.Insert, routeValues);
             base.OnPreRenderComplete(e);
         }
 
         protected void DynamicFilter_FilterChanged(object sender, EventArgs e)
         {
-            GridView1.PageIndex = 0;
+            this.GridView1.PageIndex = 0;
         }
 
     }

@@ -18,6 +18,7 @@ namespace Proofted.Web.Tests.Utilities
     using Proofted.Web.Filters;
     using Proofted.Web.Migrations;
     using Proofted.Web.Models;
+    using Proofted.Web.Models.Security;
 
     class DatabaseMigrations
     {

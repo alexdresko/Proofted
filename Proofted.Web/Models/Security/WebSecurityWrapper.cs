@@ -1,10 +1,9 @@
-﻿namespace Proofted.Web.Models
+﻿namespace Proofted.Web.Models.Security
 {
     using System.Security.Principal;
     using System.Web;
 
     using WebMatrix.WebData;
-
 
     public class WebSecurityWrapper : IWebSecurity
     {

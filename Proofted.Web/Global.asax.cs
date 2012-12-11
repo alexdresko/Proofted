@@ -29,7 +29,7 @@ namespace Proofted.Web
 
         protected void Application_Start()
         {
-            DynamicData.Register(RouteTable.Routes);
+            DynamicData2.Register(RouteTable.Routes);
 
             AreaRegistration.RegisterAllAreas();
 

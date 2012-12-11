@@ -3,6 +3,8 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Proofted.Web.Models.Mapping
 {
+    using Proofted.Web.Models.Security;
+
     public class webpages_MembershipMap : EntityTypeConfiguration<webpages_Membership>
     {
         public webpages_MembershipMap()

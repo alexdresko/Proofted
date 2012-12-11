@@ -1,45 +1,43 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Web.DynamicData;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.FieldTemplates
 {
-    public partial class Enumeration_EditField : System.Web.DynamicData.FieldTemplateUserControl
+	using System;
+	using System.Collections.Specialized;
+	using System.Web.DynamicData;
+	using System.Web.UI;
+	using System.Web.UI.WebControls;
+
+	public partial class Enumeration_EditField : System.Web.DynamicData.FieldTemplateUserControl
     {
         private Type _enumType;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DropDownList1.ToolTip = Column.Description;
+            this.DropDownList1.ToolTip = this.Column.Description;
 
-            if (DropDownList1.Items.Count == 0)
+            if (this.DropDownList1.Items.Count == 0)
             {
-                if (Mode == DataBoundControlMode.Insert || !Column.IsRequired)
+                if (this.Mode == DataBoundControlMode.Insert || !this.Column.IsRequired)
                 {
-                    DropDownList1.Items.Add(new ListItem("[Not Set]", String.Empty));
+                    this.DropDownList1.Items.Add(new ListItem("[Not Set]", String.Empty));
                 }
-                PopulateListControl(DropDownList1);
+                this.PopulateListControl(this.DropDownList1);
             }
 
-            SetUpValidator(RequiredFieldValidator1);
-            SetUpValidator(DynamicValidator1);
+            this.SetUpValidator(this.RequiredFieldValidator1);
+            this.SetUpValidator(this.DynamicValidator1);
         }
 
         protected override void OnDataBinding(EventArgs e)
         {
             base.OnDataBinding(e);
 
-            if (Mode == DataBoundControlMode.Edit && FieldValue != null)
+            if (this.Mode == DataBoundControlMode.Edit && this.FieldValue != null)
             {
-                string selectedValueString = GetSelectedValueString();
-                ListItem item = DropDownList1.Items.FindByValue(selectedValueString);
+                string selectedValueString = this.GetSelectedValueString();
+                ListItem item = this.DropDownList1.Items.FindByValue(selectedValueString);
                 if (item != null)
                 {
-                    DropDownList1.SelectedValue = selectedValueString;
+                    this.DropDownList1.SelectedValue = selectedValueString;
                 }
             }
         }
@@ -48,29 +46,29 @@ namespace Data2
         {
             get
             {
-                if (_enumType == null)
+                if (this._enumType == null)
                 {
-                    _enumType = Column.GetEnumType();
+                    this._enumType = this.Column.GetEnumType();
                 }
-                return _enumType;
+                return this._enumType;
             }
         }
 
         protected override void ExtractValues(IOrderedDictionary dictionary)
         {
-            string value = DropDownList1.SelectedValue;
+            string value = this.DropDownList1.SelectedValue;
             if (value == String.Empty)
             {
                 value = null;
             }
-            dictionary[Column.Name] = ConvertEditedValue(value);
+            dictionary[this.Column.Name] = this.ConvertEditedValue(value);
         }
 
         public override Control DataControl
         {
             get
             {
-                return DropDownList1;
+                return this.DropDownList1;
             }
         }
 

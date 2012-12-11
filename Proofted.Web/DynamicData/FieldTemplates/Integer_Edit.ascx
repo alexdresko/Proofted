@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" CodeBehind="Integer_Edit.ascx.cs" Inherits="Data2.Integer_EditField" %>
+﻿<%@ Control Language="C#" CodeBehind="Integer_Edit.ascx.cs" Inherits="Proofted.Web.DynamicData.FieldTemplates.Integer_EditField" %>
 
 
 <asp:TextBox ID="TextBox1" runat="server" Text='<%# FieldValueEditString %>' Columns="10" TextMode="Number"></asp:TextBox>

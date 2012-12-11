@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Web.DynamicData;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.FieldTemplates
 {
-    public partial class EnumerationField : System.Web.DynamicData.FieldTemplateUserControl
+	using System;
+	using System.Web.DynamicData;
+	using System.Web.UI;
+
+	public partial class EnumerationField : System.Web.DynamicData.FieldTemplateUserControl
     {
         public override Control DataControl
         {
             get
             {
-                return Literal1;
+                return this.Literal1;
             }
         }
 
@@ -22,19 +18,19 @@ namespace Data2
         {
             get
             {
-                if (FieldValue == null)
+                if (this.FieldValue == null)
                 {
-                    return FieldValueString;
+                    return this.FieldValueString;
                 }
 
-                Type enumType = Column.GetEnumType();
+                Type enumType = this.Column.GetEnumType();
                 if (enumType != null)
                 {
-                    object enumValue = System.Enum.ToObject(enumType, FieldValue);
-                    return FormatFieldValue(enumValue);
+                    object enumValue = System.Enum.ToObject(enumType, this.FieldValue);
+                    return this.FormatFieldValue(enumValue);
                 }
 
-                return FieldValueString;
+                return this.FieldValueString;
             }
         }
 

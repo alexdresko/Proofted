@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Data/Site.master" CodeBehind="Insert.aspx.cs" Inherits="Data2.Insert" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Data/Site.master" CodeBehind="Insert.aspx.cs" Inherits="Proofted.Web.DynamicData.PageTemplates.Insert" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>

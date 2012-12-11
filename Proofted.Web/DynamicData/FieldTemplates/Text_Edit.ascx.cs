@@ -1,47 +1,43 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Web.DynamicData;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.FieldTemplates
 {
-    public partial class Text_EditField : System.Web.DynamicData.FieldTemplateUserControl
+	using System;
+	using System.Collections.Specialized;
+	using System.Web.UI;
+
+	public partial class Text_EditField : System.Web.DynamicData.FieldTemplateUserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Column.MaxLength < 20)
+            if (this.Column.MaxLength < 20)
             {
-                TextBox1.Columns = Column.MaxLength;
+                this.TextBox1.Columns = this.Column.MaxLength;
             }
-            TextBox1.ToolTip = Column.Description;
+            this.TextBox1.ToolTip = this.Column.Description;
 
-            SetUpValidator(RequiredFieldValidator1);
-            SetUpValidator(RegularExpressionValidator1);
-            SetUpValidator(DynamicValidator1);
+            this.SetUpValidator(this.RequiredFieldValidator1);
+            this.SetUpValidator(this.RegularExpressionValidator1);
+            this.SetUpValidator(this.DynamicValidator1);
         }
 
         protected override void OnDataBinding(EventArgs e)
         {
             base.OnDataBinding(e);
-            if (Column.MaxLength > 0)
+            if (this.Column.MaxLength > 0)
             {
-                TextBox1.MaxLength = Math.Max(FieldValueEditString.Length, Column.MaxLength);
+                this.TextBox1.MaxLength = Math.Max(this.FieldValueEditString.Length, this.Column.MaxLength);
             }
         }
 
         protected override void ExtractValues(IOrderedDictionary dictionary)
         {
-            dictionary[Column.Name] = ConvertEditedValue(TextBox1.Text);
+            dictionary[this.Column.Name] = this.ConvertEditedValue(this.TextBox1.Text);
         }
 
         public override Control DataControl
         {
             get
             {
-                return TextBox1;
+                return this.TextBox1;
             }
         }
 

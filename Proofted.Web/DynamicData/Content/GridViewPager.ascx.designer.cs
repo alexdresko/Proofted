@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Data2
+namespace Proofted.Web.DynamicData.Content
 {
 
 

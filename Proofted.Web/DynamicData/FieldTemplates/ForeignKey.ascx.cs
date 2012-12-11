@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Web.DynamicData;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.FieldTemplates
 {
-    public partial class ForeignKeyField : System.Web.DynamicData.FieldTemplateUserControl
+	using System;
+	using System.Web.UI;
+
+	public partial class ForeignKeyField : System.Web.DynamicData.FieldTemplateUserControl
     {
         private bool _allowNavigation = true;
 
@@ -22,42 +17,42 @@ namespace Data2
         {
             get
             {
-                return _allowNavigation;
+                return this._allowNavigation;
             }
             set
             {
-                _allowNavigation = value;
+                this._allowNavigation = value;
             }
         }
 
         protected string GetDisplayString()
         {
-            object value = FieldValue;
+            object value = this.FieldValue;
 
             if (value == null)
             {
-                return FormatFieldValue(ForeignKeyColumn.GetForeignKeyString(Row));
+                return this.FormatFieldValue(this.ForeignKeyColumn.GetForeignKeyString(this.Row));
             }
             else
             {
-                return FormatFieldValue(ForeignKeyColumn.ParentTable.GetDisplayString(value));
+                return this.FormatFieldValue(this.ForeignKeyColumn.ParentTable.GetDisplayString(value));
             }
         }
 
         protected string GetNavigateUrl()
         {
-            if (!AllowNavigation)
+            if (!this.AllowNavigation)
             {
                 return null;
             }
 
-            if (String.IsNullOrEmpty(NavigateUrl))
+            if (String.IsNullOrEmpty(this.NavigateUrl))
             {
-                return ForeignKeyPath;
+                return this.ForeignKeyPath;
             }
             else
             {
-                return BuildForeignKeyPath(NavigateUrl);
+                return this.BuildForeignKeyPath(this.NavigateUrl);
             }
         }
 
@@ -65,7 +60,7 @@ namespace Data2
         {
             get
             {
-                return HyperLink1;
+                return this.HyperLink1;
             }
         }
 

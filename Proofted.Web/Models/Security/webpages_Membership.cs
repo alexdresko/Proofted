@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-
-namespace Proofted.Web.Models
+namespace Proofted.Web.Models.Security
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 

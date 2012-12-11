@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Data.Objects;
-using System.Data.Objects.DataClasses;
-using System.Web.DynamicData;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.FieldTemplates
 {
-    public partial class ManyToManyField : System.Web.DynamicData.FieldTemplateUserControl
+	using System;
+	using System.ComponentModel;
+	using System.Data.Objects.DataClasses;
+	using System.Web.UI;
+
+	public partial class ManyToManyField : System.Web.DynamicData.FieldTemplateUserControl
     {
         protected override void OnDataBinding(EventArgs e)
         {
             base.OnDataBinding(e);
 
             object entity;
-            ICustomTypeDescriptor rowDescriptor = Row as ICustomTypeDescriptor;
+            ICustomTypeDescriptor rowDescriptor = this.Row as ICustomTypeDescriptor;
             if (rowDescriptor != null)
             {
                 // Get the real entity from the wrapper
@@ -25,14 +20,14 @@ namespace Data2
             }
             else
             {
-                entity = Row;
+                entity = this.Row;
             }
 
             // Get the collection and make sure it's loaded
-            RelatedEnd entityCollection = Column.EntityTypeProperty.GetValue(entity, null) as RelatedEnd;
+            RelatedEnd entityCollection = this.Column.EntityTypeProperty.GetValue(entity, null) as RelatedEnd;
             if (entityCollection == null)
             {
-                throw new InvalidOperationException(String.Format("The ManyToMany template does not support the collection type of the '{0}' column on the '{1}' table.", Column.Name, Table.Name));
+                throw new InvalidOperationException(String.Format("The ManyToMany template does not support the collection type of the '{0}' column on the '{1}' table.", this.Column.Name, this.Table.Name));
             }
             if (!entityCollection.IsLoaded)
             {
@@ -40,15 +35,15 @@ namespace Data2
             }
 
             // Bind the repeater to the list of children entities
-            Repeater1.DataSource = entityCollection;
-            Repeater1.DataBind();
+            this.Repeater1.DataSource = entityCollection;
+            this.Repeater1.DataBind();
         }
 
         public override Control DataControl
         {
             get
             {
-                return Repeater1;
+                return this.Repeater1;
             }
         }
 

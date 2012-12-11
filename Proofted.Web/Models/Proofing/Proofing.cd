@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Proofted.Web.Models.Proofing.Project">
+    <Position X="7.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAgAAAAAAAAAAQABAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Proofing\Project.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Tags" />
+      <Property Name="ProjectFiles" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Proofted.Web.Models.Proofing.Organization">
+    <Position X="4.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Models\Proofing\Organization.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Projects" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Proofted.Web.Models.Proofing.Tag">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQE=</HashCode>
+      <FileName>Models\Proofing\Tag.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Proofted.Web.Models.Proofing.ProjectFile">
+    <Position X="7.5" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAIAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Proofing\ProjectFile.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Approvers" />
+      <Property Name="Threads" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Proofted.Web.Models.Proofing.Approver">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAgAEAAAAQAAAgAAAAAAIAA=</HashCode>
+      <FileName>Models\Proofing\Approver.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Decision" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Proofted.Web.Models.Proofing.OrganizationGroup">
+    <Position X="1" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAQAAQAAAgAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\Proofing\OrganizationGroup.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Organization" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Proofted.Web.Models.Proofing.CommentThread">
+    <Position X="4.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAgAAAQAAAAAAAAAABAAIAA=</HashCode>
+      <FileName>Models\Proofing\CommentThread.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Comments" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Proofted.Web.Models.Proofing.Comment">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Proofing\Comment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Proofted.Web.Models.Proofing.Decision" Collapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAEAAAA=</HashCode>
+      <FileName>Models\Proofing\Decision.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

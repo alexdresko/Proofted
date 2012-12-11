@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Web.DynamicData;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.FieldTemplates
 {
-    public partial class TextField : System.Web.DynamicData.FieldTemplateUserControl
+	using System.Web.DynamicData;
+	using System.Web.UI;
+
+	public partial class TextField : System.Web.DynamicData.FieldTemplateUserControl
     {
         private const int MAX_DISPLAYLENGTH_IN_LIST = 25;
 
@@ -17,7 +12,7 @@ namespace Data2
             get
             {
                 string value = base.FieldValueString;
-                if (ContainerType == ContainerType.List)
+                if (this.ContainerType == ContainerType.List)
                 {
                     if (value != null && value.Length > MAX_DISPLAYLENGTH_IN_LIST)
                     {
@@ -32,7 +27,7 @@ namespace Data2
         {
             get
             {
-                return Literal1;
+                return this.Literal1;
             }
         }
 

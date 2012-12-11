@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" CodeBehind="Enumeration.ascx.cs" Inherits="Data2.EnumerationFilter" %>
+﻿<%@ Control Language="C#" CodeBehind="Enumeration.ascx.cs" Inherits="Proofted.Web.DynamicData.Filters.EnumerationFilter" %>
 
 <asp:DropDownList runat="server" ID="DropDownList1" AutoPostBack="True" CssClass="DDFilter"
     OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">

@@ -8,6 +8,8 @@ namespace Proofted.Web.Models
     using System.Data.Entity;
 
     using Proofted.Web.Models.Mapping;
+    using Proofted.Web.Models.Proofing;
+    using Proofted.Web.Models.Security;
 
     public class ProoftedDbContext : DbContext
     {
@@ -17,6 +19,8 @@ namespace Proofted.Web.Models
         }
 
         public DbSet<FaceBookAppCredential> FaceBookAppCredentials { get; set; }
+
+		//public DbSet<Project> Projects { get; set; }
 
  
 

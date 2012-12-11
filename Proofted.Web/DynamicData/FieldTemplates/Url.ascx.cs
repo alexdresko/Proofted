@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Web.DynamicData;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.FieldTemplates
 {
-    public partial class UrlField : System.Web.DynamicData.FieldTemplateUserControl
+	using System;
+	using System.Web.UI;
+
+	public partial class UrlField : System.Web.DynamicData.FieldTemplateUserControl
     {
         protected override void OnDataBinding(EventArgs e)
         {
-            HyperLinkUrl.NavigateUrl = ProcessUrl(FieldValueString);
+            this.HyperLinkUrl.NavigateUrl = this.ProcessUrl(this.FieldValueString);
         }
 
         private string ProcessUrl(string url)
@@ -29,7 +24,7 @@ namespace Data2
         {
             get
             {
-                return HyperLinkUrl;
+                return this.HyperLinkUrl;
             }
         }
 

@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-
-namespace Proofted.Web.Models
+namespace Proofted.Web.Models.Security
 {
     public class FaceBookAppCredential
     {

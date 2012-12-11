@@ -1,4 +1,4 @@
-﻿namespace Proofted.Web.Models
+﻿namespace Proofted.Web.Models.Security
 {
     using System.Security.Principal;
 

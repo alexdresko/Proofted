@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Proofted.Web.Models
+﻿namespace Proofted.Web.Models.Security
 {
+    using System.Collections.Generic;
+
     using DotNetOpenAuth.AspNet;
 
     using Microsoft.Web.WebPages.OAuth;

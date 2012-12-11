@@ -4,6 +4,7 @@ namespace Proofted.Web.Core
     using System.Linq;
 
     using Proofted.Web.Models;
+    using Proofted.Web.Models.Security;
 
     public class OAuthSettingsRepository
     {

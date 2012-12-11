@@ -1,8 +1,8 @@
-﻿using System.Security.Principal;
-using System.Web;
-
-namespace Proofted.Web.Models
+﻿namespace Proofted.Web.Models.Security
 {
+    using System.Security.Principal;
+    using System.Web;
+
     public class WebSecurityWrapper2 : IWebSecurity
     {
         private readonly IWebSecurity _webSecurity;
@@ -14,34 +14,34 @@ namespace Proofted.Web.Models
 
         public bool Login(string userName, string password, bool persistCookie = false)
         {
-            return _webSecurity.Login(userName, password, persistCookie);
+            return this._webSecurity.Login(userName, password, persistCookie);
         }
 
         public void Logout()
         {
-            _webSecurity.Logout();
+            this._webSecurity.Logout();
         }
 
         public string CreateUserAndAccount(string userName, string password, object propertyValues = null, bool requireConfirmationToken = false)
         {
-            var account = _webSecurity.CreateUserAndAccount(userName, password, propertyValues, requireConfirmationToken);
+            var account = this._webSecurity.CreateUserAndAccount(userName, password, propertyValues, requireConfirmationToken);
             AdminSetup.SetupAdminIfNecessary(userName);
             return account;
         }
 
         public int GetUserId(string userName)
         {
-            return _webSecurity.GetUserId(userName);
+            return this._webSecurity.GetUserId(userName);
         }
 
         public bool ChangePassword(string userName, string currentPassword, string newPassword)
         {
-            return _webSecurity.ChangePassword(userName, currentPassword, newPassword);
+            return this._webSecurity.ChangePassword(userName, currentPassword, newPassword);
         }
 
         public string CreateAccount(string userName, string password, bool requireConfirmationToken = false)
         {
-            var account = _webSecurity.CreateAccount(userName, password, requireConfirmationToken);
+            var account = this._webSecurity.CreateAccount(userName, password, requireConfirmationToken);
             return account;
         }
 
@@ -52,7 +52,7 @@ namespace Proofted.Web.Models
 
         public void InitializeDatabaseConnection(string defaultconnection, string userprofile, string userid, string username, bool autoCreateTables)
         {
-            _webSecurity.InitializeDatabaseConnection(defaultconnection, userprofile, userid, username, autoCreateTables);
+            this._webSecurity.InitializeDatabaseConnection(defaultconnection, userprofile, userid, username, autoCreateTables);
         }
     }
 }

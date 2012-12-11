@@ -1,24 +1,22 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-using System.Web.DynamicData;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.Content
 {
-    public partial class GridViewPager : System.Web.UI.UserControl
+	using System;
+	using System.Globalization;
+	using System.Web.UI;
+	using System.Web.UI.WebControls;
+
+	public partial class GridViewPager : System.Web.UI.UserControl
     {
         private GridView _gridView;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Control c = Parent;
+            Control c = this.Parent;
             while (c != null)
             {
                 if (c is GridView)
                 {
-                    _gridView = (GridView)c;
+                    this._gridView = (GridView)c;
                     break;
                 }
                 c = c.Parent;
@@ -27,50 +25,50 @@ namespace Data2
 
         protected void TextBoxPage_TextChanged(object sender, EventArgs e)
         {
-            if (_gridView == null)
+            if (this._gridView == null)
             {
                 return;
             }
             int page;
-            if (int.TryParse(TextBoxPage.Text.Trim(), out page))
+            if (int.TryParse(this.TextBoxPage.Text.Trim(), out page))
             {
                 if (page <= 0)
                 {
                     page = 1;
                 }
-                if (page > _gridView.PageCount)
+                if (page > this._gridView.PageCount)
                 {
-                    page = _gridView.PageCount;
+                    page = this._gridView.PageCount;
                 }
-                _gridView.PageIndex = page - 1;
+                this._gridView.PageIndex = page - 1;
             }
-            TextBoxPage.Text = (_gridView.PageIndex + 1).ToString(CultureInfo.CurrentCulture);
+            this.TextBoxPage.Text = (this._gridView.PageIndex + 1).ToString(CultureInfo.CurrentCulture);
         }
 
         protected void DropDownListPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_gridView == null)
+            if (this._gridView == null)
             {
                 return;
             }
             DropDownList dropdownlistpagersize = (DropDownList)sender;
-            _gridView.PageSize = Convert.ToInt32(dropdownlistpagersize.SelectedValue, CultureInfo.CurrentCulture);
-            int pageindex = _gridView.PageIndex;
-            _gridView.DataBind();
-            if (_gridView.PageIndex != pageindex)
+            this._gridView.PageSize = Convert.ToInt32(dropdownlistpagersize.SelectedValue, CultureInfo.CurrentCulture);
+            int pageindex = this._gridView.PageIndex;
+            this._gridView.DataBind();
+            if (this._gridView.PageIndex != pageindex)
             {
                 //if page index changed it means the previous page was not valid and was adjusted. Rebind to fill control with adjusted page
-                _gridView.DataBind();
+                this._gridView.DataBind();
             }
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            if (_gridView != null)
+            if (this._gridView != null)
             {
-                LabelNumberOfPages.Text = _gridView.PageCount.ToString(CultureInfo.CurrentCulture);
-                TextBoxPage.Text = (_gridView.PageIndex + 1).ToString(CultureInfo.CurrentCulture);
-                DropDownListPageSize.SelectedValue = _gridView.PageSize.ToString(CultureInfo.CurrentCulture);
+                this.LabelNumberOfPages.Text = this._gridView.PageCount.ToString(CultureInfo.CurrentCulture);
+                this.TextBoxPage.Text = (this._gridView.PageIndex + 1).ToString(CultureInfo.CurrentCulture);
+                this.DropDownListPageSize.SelectedValue = this._gridView.PageSize.ToString(CultureInfo.CurrentCulture);
             }
         }
 

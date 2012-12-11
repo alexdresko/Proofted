@@ -9,6 +9,8 @@ using Proofted.Web.Tests.Utilities;
 
 namespace Proofted.Web.Tests.OAuthSettings
 {
+    using Proofted.Web.Models.Security;
+
     //using Microsoft.Web.WebPages.OAuth;
 
     [TestClass]

@@ -1,25 +1,15 @@
-﻿using System;
-using System.Data;
-using System.Data.Objects;
-using System.Data.Objects.DataClasses;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Configuration;
-using System.Collections;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Xml.Linq;
-using System.Web.DynamicData;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.FieldTemplates
 {
-    public partial class ManyToMany_EditField : System.Web.DynamicData.FieldTemplateUserControl
+	using System;
+	using System.Data.Objects;
+	using System.Data.Objects.DataClasses;
+	using System.ComponentModel;
+	using System.Collections;
+	using System.Web.UI;
+	using System.Web.UI.WebControls;
+	using System.Web.DynamicData;
+
+	public partial class ManyToMany_EditField : System.Web.DynamicData.FieldTemplateUserControl
     {
         public void Page_Load(object sender, EventArgs e)
         {
@@ -27,21 +17,21 @@ namespace Data2
             EntityDataSource ds = (EntityDataSource)this.FindDataSourceControl();
 
             // This field template is used both for Editing and Inserting
-            ds.Updating += new EventHandler<EntityDataSourceChangingEventArgs>(DataSource_UpdatingOrInserting);
-            ds.Inserting += new EventHandler<EntityDataSourceChangingEventArgs>(DataSource_UpdatingOrInserting);
+            ds.Updating += new EventHandler<EntityDataSourceChangingEventArgs>(this.DataSource_UpdatingOrInserting);
+            ds.Inserting += new EventHandler<EntityDataSourceChangingEventArgs>(this.DataSource_UpdatingOrInserting);
         }
 
         void DataSource_UpdatingOrInserting(object sender, EntityDataSourceChangingEventArgs e)
         {
-            MetaTable childTable = ChildrenColumn.ChildTable;
+            MetaTable childTable = this.ChildrenColumn.ChildTable;
 
             // Comments assume employee/territory for illustration, but the code is generic
 
             // Get the collection of territories for this employee
-            RelatedEnd entityCollection = (RelatedEnd)Column.EntityTypeProperty.GetValue(e.Entity, null);
+            RelatedEnd entityCollection = (RelatedEnd)this.Column.EntityTypeProperty.GetValue(e.Entity, null);
 
             // In Edit mode, make sure it's loaded (doesn't make sense in Insert mode)
-            if (Mode == DataBoundControlMode.Edit && !entityCollection.IsLoaded)
+            if (this.Mode == DataBoundControlMode.Edit && !entityCollection.IsLoaded)
             {
                 entityCollection.Load();
             }
@@ -58,7 +48,7 @@ namespace Data2
 
                 // Find the checkbox for this territory, which gives us the new state
                 string pkString = childTable.GetPrimaryKeyString(childEntity);
-                ListItem listItem = CheckBoxList1.Items.FindByValue(pkString);
+                ListItem listItem = this.CheckBoxList1.Items.FindByValue(pkString);
                 if (listItem == null)
                     continue;
 
@@ -78,17 +68,17 @@ namespace Data2
 
         protected void CheckBoxList1_DataBound(object sender, EventArgs e)
         {
-            MetaTable childTable = ChildrenColumn.ChildTable;
+            MetaTable childTable = this.ChildrenColumn.ChildTable;
 
             // Comments assume employee/territory for illustration, but the code is generic
 
             IList entityList = null;
             ObjectContext objectContext = null;
 
-            if (Mode == DataBoundControlMode.Edit)
+            if (this.Mode == DataBoundControlMode.Edit)
             {
                 object entity;
-                ICustomTypeDescriptor rowDescriptor = Row as ICustomTypeDescriptor;
+                ICustomTypeDescriptor rowDescriptor = this.Row as ICustomTypeDescriptor;
                 if (rowDescriptor != null)
                 {
                     // Get the real entity from the wrapper
@@ -96,14 +86,14 @@ namespace Data2
                 }
                 else
                 {
-                    entity = Row;
+                    entity = this.Row;
                 }
 
                 // Get the collection of territories for this employee and make sure it's loaded
-                RelatedEnd entityCollection = Column.EntityTypeProperty.GetValue(entity, null) as RelatedEnd;
+                RelatedEnd entityCollection = this.Column.EntityTypeProperty.GetValue(entity, null) as RelatedEnd;
                 if (entityCollection == null)
                 {
-                    throw new InvalidOperationException(String.Format("The ManyToMany template does not support the collection type of the '{0}' column on the '{1}' table.", Column.Name, Table.Name));
+                    throw new InvalidOperationException(String.Format("The ManyToMany template does not support the collection type of the '{0}' column on the '{1}' table.", this.Column.Name, this.Table.Name));
                 }
                 if (!entityCollection.IsLoaded)
                 {
@@ -129,12 +119,12 @@ namespace Data2
                     actualTable.GetPrimaryKeyString(childEntity));
 
                 // Make it selected if the current employee has that territory
-                if (Mode == DataBoundControlMode.Edit)
+                if (this.Mode == DataBoundControlMode.Edit)
                 {
                     listItem.Selected = entityList.Contains(childEntity);
                 }
 
-                CheckBoxList1.Items.Add(listItem);
+                this.CheckBoxList1.Items.Add(listItem);
             }
         }
 
@@ -142,7 +132,7 @@ namespace Data2
         {
             get
             {
-                return CheckBoxList1;
+                return this.CheckBoxList1;
             }
         }
 

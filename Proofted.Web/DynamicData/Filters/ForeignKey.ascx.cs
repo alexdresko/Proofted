@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web.DynamicData;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.Filters
 {
-    public partial class ForeignKeyFilter : System.Web.DynamicData.QueryableFilterUserControl
+	using System;
+	using System.Collections;
+	using System.Linq;
+	using System.Web.DynamicData;
+	using System.Web.UI;
+	using System.Web.UI.WebControls;
+
+	public partial class ForeignKeyFilter : System.Web.DynamicData.QueryableFilterUserControl
     {
         private const string NullValueString = "[null]";
         private new MetaForeignKeyColumn Column
@@ -26,36 +22,36 @@ namespace Data2
         {
             get
             {
-                return DropDownList1;
+                return this.DropDownList1;
             }
         }
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (!this.Page.IsPostBack)
             {
-                if (!Column.IsRequired)
+                if (!this.Column.IsRequired)
                 {
-                    DropDownList1.Items.Add(new ListItem("[Not Set]", NullValueString));
+                    this.DropDownList1.Items.Add(new ListItem("[Not Set]", NullValueString));
                 }
-                PopulateListControl(DropDownList1);
+                this.PopulateListControl(this.DropDownList1);
                 // Set the initial value if there is one
-                string initialValue = DefaultValue;
+                string initialValue = this.DefaultValue;
                 if (!String.IsNullOrEmpty(initialValue))
                 {
-                    DropDownList1.SelectedValue = initialValue;
+                    this.DropDownList1.SelectedValue = initialValue;
                 }
             }
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            OnFilterChanged();
+            this.OnFilterChanged();
         }
 
         public override IQueryable GetQueryable(IQueryable source)
         {
-            string selectedValue = DropDownList1.SelectedValue;
+            string selectedValue = this.DropDownList1.SelectedValue;
             if (String.IsNullOrEmpty(selectedValue))
             {
                 return source;
@@ -63,19 +59,19 @@ namespace Data2
 
             if (selectedValue == NullValueString)
             {
-                return ApplyEqualityFilter(source, Column.Name, null);
+                return ApplyEqualityFilter(source, this.Column.Name, null);
             }
 
             IDictionary dict = new Hashtable();
-            Column.ExtractForeignKey(dict, selectedValue);
+            this.Column.ExtractForeignKey(dict, selectedValue);
             foreach (DictionaryEntry entry in dict)
             {
                 string key = (string)entry.Key;
-                if (DefaultValues != null)
+                if (this.DefaultValues != null)
                 {
-                    DefaultValues[key] = entry.Value;
+                    this.DefaultValues[key] = entry.Value;
                 }
-                source = ApplyEqualityFilter(source, Column.GetFilterExpression(key), entry.Value);
+                source = ApplyEqualityFilter(source, this.Column.GetFilterExpression(key), entry.Value);
             }
             return source;
         }

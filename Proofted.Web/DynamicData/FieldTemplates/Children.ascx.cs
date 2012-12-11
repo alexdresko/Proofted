@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Web.DynamicData;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.FieldTemplates
 {
-    public partial class ChildrenField : System.Web.DynamicData.FieldTemplateUserControl
+	using System;
+	using System.Web.UI;
+
+	public partial class ChildrenField : System.Web.DynamicData.FieldTemplateUserControl
     {
         private bool _allowNavigation = true;
         private string _navigateUrl;
@@ -17,11 +12,11 @@ namespace Data2
         {
             get
             {
-                return _navigateUrl;
+                return this._navigateUrl;
             }
             set
             {
-                _navigateUrl = value;
+                this._navigateUrl = value;
             }
         }
 
@@ -29,33 +24,33 @@ namespace Data2
         {
             get
             {
-                return _allowNavigation;
+                return this._allowNavigation;
             }
             set
             {
-                _allowNavigation = value;
+                this._allowNavigation = value;
             }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            HyperLink1.Text = "View " + ChildrenColumn.ChildTable.DisplayName;
+            this.HyperLink1.Text = "View " + this.ChildrenColumn.ChildTable.DisplayName;
         }
 
         protected string GetChildrenPath()
         {
-            if (!AllowNavigation)
+            if (!this.AllowNavigation)
             {
                 return null;
             }
 
-            if (String.IsNullOrEmpty(NavigateUrl))
+            if (String.IsNullOrEmpty(this.NavigateUrl))
             {
-                return ChildrenPath;
+                return this.ChildrenPath;
             }
             else
             {
-                return BuildChildrenPath(NavigateUrl);
+                return this.BuildChildrenPath(this.NavigateUrl);
             }
         }
 
@@ -63,7 +58,7 @@ namespace Data2
         {
             get
             {
-                return HyperLink1;
+                return this.HyperLink1;
             }
         }
 

@@ -5,6 +5,7 @@ using Proofted.Web.Models;
 namespace Proofted.Web.Core
 {
     using Proofted.Web.Core.Exceptions;
+    using Proofted.Web.Models.Security;
 
     public class OAuthRegistrar
     {

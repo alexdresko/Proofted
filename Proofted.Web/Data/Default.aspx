@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Data/Site.master" CodeBehind="Default.aspx.cs" Inherits="Data2._Default" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Data/Site.master" CodeBehind="Default.aspx.cs" Inherits="Proofted.Web.Data._Default" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>

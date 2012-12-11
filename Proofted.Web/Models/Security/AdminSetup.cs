@@ -1,7 +1,7 @@
-﻿using System.Linq;
-
-namespace Proofted.Web.Models
+﻿namespace Proofted.Web.Models.Security
 {
+    using System.Linq;
+
     using Proofted.Web.Core.Exceptions;
 
     public class AdminSetup
@@ -11,7 +11,7 @@ namespace Proofted.Web.Models
 
         private AdminSetup(string userName)
         {
-            _userName = userName;
+            this._userName = userName;
         }
 
         public static void SetupAdminIfNecessary(string userName)
@@ -29,7 +29,7 @@ namespace Proofted.Web.Models
 
                     if (admin == null)
                     {
-                        CreateAdminAndAssociateUser(context);
+                        this.CreateAdminAndAssociateUser(context);
                     }
                 });
         }
@@ -41,7 +41,7 @@ namespace Proofted.Web.Models
 
             bool moreThanOneUserExists = context.UserProfiles.Count() != 1;
 
-            var user = GetUserByName(context);
+            var user = this.GetUserByName(context);
             if (user != null && !moreThanOneUserExists)
             {
                 user.webpages_Roles.Add(admin);
@@ -57,7 +57,7 @@ namespace Proofted.Web.Models
 
         private UserProfile GetUserByName(UserDbContext context)
         {
-            var user = context.UserProfiles.SingleOrDefault(p => p.UserName == _userName);
+            var user = context.UserProfiles.SingleOrDefault(p => p.UserName == this._userName);
             return user;
         }
 

@@ -8,6 +8,8 @@ using Proofted.Web.Models;
 
 namespace Proofted.Web.Filters
 {
+    using Proofted.Web.Models.Security;
+
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
     public sealed class InitializeSimpleMembershipAttribute : ActionFilterAttribute
     {

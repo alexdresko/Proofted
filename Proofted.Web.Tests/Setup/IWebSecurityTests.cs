@@ -12,6 +12,7 @@
     using Proofted.Web.Core;
     using Proofted.Web.Core.Exceptions;
     using Proofted.Web.Models;
+    using Proofted.Web.Models.Security;
     using Proofted.Web.Tests.OAuthSettings;
     using Proofted.Web.Tests.Utilities;
 

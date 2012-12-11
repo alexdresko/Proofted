@@ -1,48 +1,42 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web.DynamicData;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.Filters
 {
-    public partial class EnumerationFilter : System.Web.DynamicData.QueryableFilterUserControl
+	using System;
+	using System.Linq;
+	using System.Web.UI;
+	using System.Web.UI.WebControls;
+
+	public partial class EnumerationFilter : System.Web.DynamicData.QueryableFilterUserControl
     {
         private const string NullValueString = "[null]";
         public override Control FilterControl
         {
             get
             {
-                return DropDownList1;
+                return this.DropDownList1;
             }
         }
 
         public void Page_Init(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (!this.Page.IsPostBack)
             {
-                if (!Column.IsRequired)
+                if (!this.Column.IsRequired)
                 {
-                    DropDownList1.Items.Add(new ListItem("[Not Set]", NullValueString));
+                    this.DropDownList1.Items.Add(new ListItem("[Not Set]", NullValueString));
                 }
-                PopulateListControl(DropDownList1);
+                this.PopulateListControl(this.DropDownList1);
                 // Set the initial value if there is one
-                string initialValue = DefaultValue;
+                string initialValue = this.DefaultValue;
                 if (!String.IsNullOrEmpty(initialValue))
                 {
-                    DropDownList1.SelectedValue = initialValue;
+                    this.DropDownList1.SelectedValue = initialValue;
                 }
             }
         }
 
         public override IQueryable GetQueryable(IQueryable source)
         {
-            string selectedValue = DropDownList1.SelectedValue;
+            string selectedValue = this.DropDownList1.SelectedValue;
             if (String.IsNullOrEmpty(selectedValue))
             {
                 return source;
@@ -53,16 +47,16 @@ namespace Data2
             {
                 value = null;
             }
-            if (DefaultValues != null)
+            if (this.DefaultValues != null)
             {
-                DefaultValues[Column.Name] = value;
+                this.DefaultValues[this.Column.Name] = value;
             }
-            return ApplyEqualityFilter(source, Column.Name, value);
+            return ApplyEqualityFilter(source, this.Column.Name, value);
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            OnFilterChanged();
+            this.OnFilterChanged();
         }
 
     }

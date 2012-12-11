@@ -1,30 +1,25 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Web.DynamicData;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.FieldTemplates
 {
-    public partial class EmailAddressField : System.Web.DynamicData.FieldTemplateUserControl
+	using System;
+	using System.Web.UI;
+
+	public partial class EmailAddressField : System.Web.DynamicData.FieldTemplateUserControl
     {
         protected override void OnDataBinding(EventArgs e)
         {
-            string url = FieldValueString;
+            string url = this.FieldValueString;
             if (!url.StartsWith("mailto:", StringComparison.OrdinalIgnoreCase))
             {
                 url = "mailto:" + url;
             }
-            HyperLink1.NavigateUrl = url;
+            this.HyperLink1.NavigateUrl = url;
         }
 
         public override Control DataControl
         {
             get
             {
-                return HyperLink1;
+                return this.HyperLink1;
             }
         }
 

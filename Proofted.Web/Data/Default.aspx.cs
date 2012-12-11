@@ -1,12 +1,10 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Web.DynamicData;
-
-namespace Data2
+﻿namespace Proofted.Web.Data
 {
-    using Proofted.Web;
+	using System;
 
-    public partial class _Default : System.Web.UI.Page
+	using Proofted.Web;
+
+	public partial class _Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -15,8 +13,8 @@ namespace Data2
             {
                 throw new InvalidOperationException("There are no accessible tables. Make sure that at least one data model is registered in Global.asax and scaffolding is enabled or implement custom pages.");
             }
-            Menu1.DataSource = visibleTables;
-            Menu1.DataBind();
+            this.Menu1.DataSource = visibleTables;
+            this.Menu1.DataBind();
         }
 
     }

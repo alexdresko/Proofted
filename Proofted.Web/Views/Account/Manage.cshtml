@@ -1,4 +1,4 @@
-﻿@model Proofted.Web.Models.LocalPasswordModel
+﻿@model Proofted.Web.Models.Security.LocalPasswordModel
 @{
     ViewBag.Title = "Manage Account";
 }
@@ -11,21 +11,29 @@
 
 <p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
 
-@if (ViewBag.HasLocalPassword)
-{
-    @Html.Partial("_ChangePasswordPartial")
-}
-else
-{ 
-    @Html.Partial("_SetPasswordPartial")
-}
+<div class="row">
+    <div class="span6">
+        @if (ViewBag.HasLocalPassword)
+        {
+            @Html.Partial("_ChangePasswordPartial")
+        }
+        else
+        { 
+            @Html.Partial("_SetPasswordPartial")
+        }
+    </div>
+    <div class="span6">
+        <section id="externalLogins">
+            @Html.Action("RemoveExternalLogins")
 
-<section id="externalLogins">
-    @Html.Action("RemoveExternalLogins")
+            <h3>Add an external login</h3>
+            @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>
+</div>
 
-    <h3>Add an external login</h3>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

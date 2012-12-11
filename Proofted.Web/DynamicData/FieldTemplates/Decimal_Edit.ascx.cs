@@ -1,36 +1,32 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Web.DynamicData;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-namespace Data2
+﻿namespace Proofted.Web.DynamicData.FieldTemplates
 {
-    public partial class Decimal_EditField : System.Web.DynamicData.FieldTemplateUserControl
+	using System;
+	using System.Collections.Specialized;
+	using System.Web.UI;
+
+	public partial class Decimal_EditField : System.Web.DynamicData.FieldTemplateUserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            TextBox1.ToolTip = Column.Description;
+            this.TextBox1.ToolTip = this.Column.Description;
 
-            SetUpValidator(RequiredFieldValidator1);
-            SetUpValidator(CompareValidator1);
-            SetUpValidator(RegularExpressionValidator1);
-            SetUpValidator(RangeValidator1);
-            SetUpValidator(DynamicValidator1);
+            this.SetUpValidator(this.RequiredFieldValidator1);
+            this.SetUpValidator(this.CompareValidator1);
+            this.SetUpValidator(this.RegularExpressionValidator1);
+            this.SetUpValidator(this.RangeValidator1);
+            this.SetUpValidator(this.DynamicValidator1);
         }
 
         protected override void ExtractValues(IOrderedDictionary dictionary)
         {
-            dictionary[Column.Name] = ConvertEditedValue(TextBox1.Text);
+            dictionary[this.Column.Name] = this.ConvertEditedValue(this.TextBox1.Text);
         }
 
         public override Control DataControl
         {
             get
             {
-                return TextBox1;
+                return this.TextBox1;
             }
         }
 
