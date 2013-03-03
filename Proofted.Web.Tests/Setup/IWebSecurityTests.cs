@@ -95,7 +95,7 @@
         {
             DatabaseMigrations.DeleteAndUpgradeDatabase(this.TestContext);
             this._fixture = FixtureFactory.CreateFixture();
-            this._securityMock = this._fixture.CreateAnonymous<Mock<IWebSecurity>>();
+            this._securityMock = this._fixture.Create<Mock<IWebSecurity>>();
             this._security = new WebSecurityWrapper2(this._securityMock.Object);
         }
 
@@ -122,15 +122,15 @@
 
         private UserProfile CreateUser(UserDbContext context)
         {
-            var user = this._fixture.CreateAnonymous<UserProfile>();
+            var user = this._fixture.Create<UserProfile>();
             context.UserProfiles.Add(user);
             return user;
         }
 
         private void RegisterUser()
         {
-            var username = this._fixture.CreateAnonymous<string>();
-            var password = this._fixture.CreateAnonymous<string>();
+            var username = this._fixture.Create<string>();
+            var password = this._fixture.Create<string>();
             this._security.CreateUserAndAccount(username, password);
         }
 

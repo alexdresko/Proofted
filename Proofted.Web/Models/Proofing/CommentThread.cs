@@ -12,11 +12,14 @@
 
 		public List<Comment> Comments { get; set; }
 
-		public ThreadStatus ThreadStatus { get; set; }
+		//public ThreadStatus ThreadStatus { get; set; }
+		public int ThreadStatus { get; set; }
 
 		public int UserId { get; set; }
 
-		public UserProfile UserProfile { get; set; }
+		public int ProjectFileId { get; set; }
+
+		public ProjectFile ProjectFile { get; set; }
 
 		#endregion
 	}

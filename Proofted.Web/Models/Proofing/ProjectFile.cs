@@ -12,6 +12,10 @@
 
 		public List<CommentThread> Threads { get; set; }
 
+		public int ProjectId { get; set; }
+
+		public Project Project { get; set; }
+
 		#endregion
 	}
 }

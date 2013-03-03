@@ -7,6 +7,7 @@
 
 	using Proofted.Web.Filters;
 	using Proofted.Web.Models;
+	using Proofted.Web.Models.Proofing;
 
 	public class DynamicData2
 	{

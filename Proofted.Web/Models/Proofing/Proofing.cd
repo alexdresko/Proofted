@@ -3,18 +3,18 @@
   <Class Name="Proofted.Web.Models.Proofing.Project">
     <Position X="7.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAABAgAAAAAAAAAAQABAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAABAgAAAAAAAAAAQABQAAAEAAAAAAAAAAIAA=</HashCode>
       <FileName>Models\Proofing\Project.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="Tags" />
       <Property Name="ProjectFiles" />
+      <Property Name="Tags" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Proofted.Web.Models.Proofing.Organization">
-    <Position X="4.5" Y="2.75" Width="1.5" />
+    <Position X="4.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAAAQA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAQAAAEAAAAAAAAAAAQA=</HashCode>
       <FileName>Models\Proofing\Organization.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -22,16 +22,16 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Proofted.Web.Models.Proofing.Tag">
-    <Position X="7.5" Y="4.75" Width="1.5" />
+    <Position X="7.5" Y="4.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQE=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIQE=</HashCode>
       <FileName>Models\Proofing\Tag.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Proofted.Web.Models.Proofing.ProjectFile">
     <Position X="7.5" Y="0.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAIAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAAAIAAAAAAAACAAABAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Proofing\ProjectFile.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -42,27 +42,14 @@
   <Class Name="Proofted.Web.Models.Proofing.Approver">
     <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAQAgAEAAAAQAAAgAAAAAAIAA=</HashCode>
+      <HashCode>AAEAAAAAABAAAAAAAAAAQAgAEAAAAQAAAgAAAAAAIAA=</HashCode>
       <FileName>Models\Proofing\Approver.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Decision" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="Proofted.Web.Models.Proofing.OrganizationGroup">
-    <Position X="1" Y="2.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAACAAAAAAAAAAAAAAAAQAAQAAAgAAAAAAAAAAIAA=</HashCode>
-      <FileName>Models\Proofing\OrganizationGroup.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Organization" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Proofted.Web.Models.Proofing.CommentThread">
     <Position X="4.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAABAAAAgAAAQAAAAAAAAAABAAIAA=</HashCode>
+      <HashCode>AAEAAAAAABAAAAAAABAAAAgAAAAAAAAAAAAAABAAIAA=</HashCode>
       <FileName>Models\Proofing\CommentThread.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -72,7 +59,7 @@
   <Class Name="Proofted.Web.Models.Proofing.Comment">
     <Position X="1.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAgAAAAABAAAAA=</HashCode>
       <FileName>Models\Proofing\Comment.cs</FileName>
     </TypeIdentifier>
   </Class>

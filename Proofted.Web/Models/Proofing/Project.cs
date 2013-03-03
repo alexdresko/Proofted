@@ -16,6 +16,10 @@
 
 		public List<Tag> Tags { get; set; }
 
+		public int OrganizationId { get; set; }
+
+		public Organization Organization { get; set; }
+
 		#endregion
 	}
 }

@@ -10,6 +10,10 @@
 
 		public int TagId { get; set; }
 
+		public int OrganizationId { get; set; }
+
+		public Organization Organization { get; set; }
+
 		#endregion
 	}
 }

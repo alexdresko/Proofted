@@ -1,5 +1,35 @@
 ﻿body {
-    background-color: #EFEFF2;
+    background-color: #292929;
+}
+
+.container, legend {
+        color: #949494;
+}
+
+.container {
+    font-family: 'Droid Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    -webkit-text-shadow: rgba(0,0,0,0) 0px 0px 1px;
+    text-shadow: rgba(0,0,0,0) 0px 0px 1px;
+    }
+
+.p-org-group {
+    background-color: #F2B33D;
+    padding: 12px;
+    margin-bottom: 12px;
+    color: #292929;
+}
+
+.p-group-stuff {
+    background-color: #F29B30;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.p-org-name {
+    font-size: 2em;
+    margin-bottom: 12px;
 }
 
 #logoutForm {
@@ -28,3 +58,5 @@
             background-repeat: repeat-x;
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
         }
+
+ 

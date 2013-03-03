@@ -5,14 +5,16 @@ namespace Proofted.Web.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<Proofted.Web.Models.ProoftedDbContext>
+    using Proofted.Web.Models.Proofing;
+
+	public sealed class Configuration : DbMigrationsConfiguration<ProoftedDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Proofted.Web.Models.ProoftedDbContext context)
+        protected override void Seed(ProoftedDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

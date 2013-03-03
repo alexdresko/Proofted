@@ -9,7 +9,8 @@ using Proofted.Web.Tests.Utilities;
 
 namespace Proofted.Web.Tests.OAuthSettings
 {
-    using Proofted.Web.Models.Security;
+	using Proofted.Web.Models.Proofing;
+	using Proofted.Web.Models.Security;
 
     //using Microsoft.Web.WebPages.OAuth;
 
@@ -28,7 +29,7 @@ namespace Proofted.Web.Tests.OAuthSettings
             var fixture = FixtureFactory.CreateFixture();
 
             var mock = fixture.Freeze<Mock<IOAuthWebSecurity>>();
-            var reg = fixture.CreateAnonymous<OAuthRegistrar>();
+            var reg = fixture.Create<OAuthRegistrar>();
 
             reg.RegisterFacebookClient();
 
@@ -58,7 +59,7 @@ namespace Proofted.Web.Tests.OAuthSettings
 
             var mock = fixture.Freeze<Mock<IOAuthWebSecurity>>();
 
-            var reg = fixture.CreateAnonymous<OAuthRegistrar>();
+            var reg = fixture.Create<OAuthRegistrar>();
             reg.RegisterFacebookClient();
 
             mock.Verify(p => p.RegisterFacebookClient(faceBookAppCredential.AppId, faceBookAppCredential.SecretKey));

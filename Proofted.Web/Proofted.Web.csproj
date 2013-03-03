@@ -45,48 +45,42 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Breeze.WebApi">
-      <HintPath>..\packages\Breeze.MVC4WebApi.0.76.2\lib\Breeze.WebApi.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.AspNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+    <Reference Include="Breeze.WebApi, Version=1.2.0.0, Culture=neutral, PublicKeyToken=f6085f1a45e2ac59, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.1.3.12303\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
+      <HintPath>..\packages\Breeze.MVC4WebApi.0.83.5\lib\Breeze.WebApi.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.Core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.Core.4.1.3.12303\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.2.2.13055\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+    <Reference Include="DotNetOpenAuth.Core, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.1.3.12303\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.2.2.13055\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.1.3.12303\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OpenId, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.1.3.12303\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.1.3.12303\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
     </Reference>
-    <Reference Include="Irony">
-      <HintPath>..\packages\Breeze.MVC4WebApi.0.76.2\lib\Irony.dll</HintPath>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="Irony, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Breeze.MVC4WebApi.0.83.5\lib\Irony.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Mono.Math, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.1.3.12303\lib\net45-full\Mono.Math.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Org.Mentalis.Security.Cryptography, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.1.3.12303\lib\net45-full\Org.Mentalis.Security.Cryptography.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -159,8 +153,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="WebActivator">
-      <HintPath>..\packages\WebActivator.1.5.2\lib\net40\WebActivator.dll</HintPath>
+    <Reference Include="WebActivator, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -185,16 +180,21 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DynamicData.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Controllers\ProoftedEfContextProvider.cs" />
     <Compile Include="Controllers\StartController.cs" />
+    <Compile Include="Controllers\StartApiController.cs" />
     <Compile Include="Core\Exceptions\CanNotCreateAdministratorException.cs" />
     <Compile Include="Core\Exceptions\ProoftedException.cs" />
     <Compile Include="Core\Exceptions\TooManyOAuthSettingsException.cs" />
+    <Compile Include="Core\InvitationMailer.cs" />
+    <Compile Include="Core\ISmtpService.cs" />
     <Compile Include="Core\OAuthRegistrar.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\OAuthSettingsRepository.cs" />
+    <Compile Include="Core\SmtpService.cs" />
     <Compile Include="Data\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -460,13 +460,39 @@
     <Compile Include="Migrations\201212102255243_Dunno.Designer.cs">
       <DependentUpon>201212102255243_Dunno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201212110417405_InitialProofing.cs" />
+    <Compile Include="Migrations\201212110417405_InitialProofing.Designer.cs">
+      <DependentUpon>201212110417405_InitialProofing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201212190416541_DecisionMaybe.cs" />
+    <Compile Include="Migrations\201212190416541_DecisionMaybe.Designer.cs">
+      <DependentUpon>201212190416541_DecisionMaybe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201301230122575_UserSchemaChanges.cs" />
+    <Compile Include="Migrations\201301230122575_UserSchemaChanges.Designer.cs">
+      <DependentUpon>201301230122575_UserSchemaChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201301272207366_Invitation.cs" />
+    <Compile Include="Migrations\201301272207366_Invitation.Designer.cs">
+      <DependentUpon>201301272207366_Invitation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201302060010459_InvitationEnhancements.cs" />
+    <Compile Include="Migrations\201302060010459_InvitationEnhancements.Designer.cs">
+      <DependentUpon>201302060010459_InvitationEnhancements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201302060019426_WhoKnows1.cs" />
+    <Compile Include="Migrations\201302060019426_WhoKnows1.Designer.cs">
+      <DependentUpon>201302060019426_WhoKnows1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Proofing\Approver.cs" />
     <Compile Include="Models\Proofing\Comment.cs" />
     <Compile Include="Models\Proofing\CommentThread.cs" />
     <Compile Include="Models\Proofing\Decision.cs" />
+    <Compile Include="Models\Proofing\Invitation.cs" />
     <Compile Include="Models\Proofing\Organization.cs" />
     <Compile Include="Models\Proofing\OrganizationGroup.cs" />
+    <Compile Include="Models\Proofing\OrganizationUser.cs" />
     <Compile Include="Models\Proofing\Project.cs" />
     <Compile Include="Models\Proofing\ProjectFile.cs" />
     <Compile Include="Models\Proofing\Tag.cs" />
@@ -481,7 +507,7 @@
     <Compile Include="Models\Mapping\webpages_RolesMap.cs" />
     <Compile Include="Models\Security\OAuthWebSecurityWrapper.cs" />
     <Compile Include="Models\Security\OAuthWebSecurityWrapper2.cs" />
-    <Compile Include="Models\ProoftedDbContext.cs" />
+    <Compile Include="Models\Proofing\ProoftedDbContext.cs" />
     <Compile Include="Models\Security\UserDbContext.cs" />
     <Compile Include="Models\Security\ExternalLogin.cs" />
     <Compile Include="Models\Security\LocalPasswordModel.cs" />
@@ -497,6 +523,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -528,6 +555,7 @@
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -557,6 +585,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Data\Default.aspx" />
     <Content Include="404.html" />
     <Content Include="apple-touch-icon-114x114-precomposed.png" />
@@ -615,6 +645,8 @@
     <Content Include="Scripts\bootstrap\vendor\bootstrap.js" />
     <Content Include="Scripts\bootstrap\vendor\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\vendor\jquery-1.8.3.min.js" />
+    <Content Include="Scripts\bootstrap\vendor\jquery-1.9.1.js" />
+    <Content Include="Scripts\bootstrap\vendor\jquery-1.9.1.min.js" />
     <Content Include="Scripts\bootstrap\vendor\modernizr-2.6.2-respond-1.1.0.min.js" />
     <Content Include="DynamicData\PageTemplates\Details.aspx" />
     <Content Include="DynamicData\PageTemplates\Edit.aspx" />
@@ -627,35 +659,40 @@
     <Content Include="DynamicData\web.config" />
     <Content Include="Data\Site.master" />
     <Content Include="Data\Web.config" />
-    <Content Include="Models\InitialStructure.cd" />
     <Content Include="Models\Proofing\Proofing.cd" />
     <None Include="Properties\PublishProfiles\proofted - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\proofted - Web Deploy.pubxml" />
-    <None Include="Scripts\breeze.intellisense.js" />
     <Content Include="Scripts\breeze.debug.js" />
+    <None Include="Scripts\breeze.intellisense.js" />
     <Content Include="Scripts\breeze.js" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <None Include="Scripts\jquery-1.8.3.intellisense.js" />
-    <Content Include="Scripts\jquery-1.8.3.js" />
-    <Content Include="Scripts\jquery-1.8.3.min.js" />
-    <Content Include="Scripts\jquery-ui-1.9.0.js" />
-    <Content Include="Scripts\jquery-ui-1.9.0.min.js" />
-    <Content Include="Scripts\jquery-ui-1.9.2.js" />
-    <Content Include="Scripts\jquery-ui-1.9.2.min.js" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.0.js" />
+    <Content Include="Scripts\jquery-ui-1.10.0.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-2.1.0.debug.js" />
-    <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\knockout.validation.debug.js" />
+    <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Proofted\dataservice.js" />
+    <Content Include="Scripts\Proofted\logger.js" />
+    <Content Include="Scripts\Proofted\main.js" />
+    <Content Include="Scripts\Proofted\shellViewModel.js" />
     <Content Include="Scripts\q.js" />
     <Content Include="Scripts\q.min.js" />
+    <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -719,6 +756,27 @@
     <EmbeddedResource Include="Migrations\201212102255243_Dunno.resx">
       <DependentUpon>201212102255243_Dunno.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201212110417405_InitialProofing.resx">
+      <DependentUpon>201212110417405_InitialProofing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201212190416541_DecisionMaybe.resx">
+      <DependentUpon>201212190416541_DecisionMaybe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201301230122575_UserSchemaChanges.resx">
+      <DependentUpon>201301230122575_UserSchemaChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201301272207366_Invitation.resx">
+      <DependentUpon>201301272207366_Invitation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201302060010459_InvitationEnhancements.resx">
+      <DependentUpon>201302060010459_InvitationEnhancements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201302060019426_WhoKnows1.resx">
+      <DependentUpon>201302060019426_WhoKnows1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

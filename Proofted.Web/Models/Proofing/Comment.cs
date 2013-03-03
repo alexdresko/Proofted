@@ -6,6 +6,10 @@
 
 		public int CommentId { get; set; }
 
+		public int CommentThreadId { get; set; }
+
+		public CommentThread CommentThread { get; set; }
+
 		#endregion
 	}
 }

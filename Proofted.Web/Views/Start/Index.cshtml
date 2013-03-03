@@ -1,7 +1,135 @@
 ﻿@model dynamic
 
-@{
-    ViewBag.Title = "Start";
-}
+<div style="display: none;" id="organizations" data-bind="template: { afterRender: finishRender }, visible: rendered">
+    <h1>Organizations</h1>
+    <!-- ko if: organizations().length > 0 -->
+    <div data-bind="foreach: organizations">
+        <div class="p-org-group">
+            <span class="p-org-name" data-bind="text: Name"></span>&nbsp;(<a href="#" data-bind="    click: destroy">Delete</a>)
+            <div class="p-group-stuff" data-bind="visible: Projects().length > 0">
+                <strong>Projects:</strong>
+                <span data-bind="foreach: Projects">
+                    <span data-bind="text: Name"></span>
+                </span>
+            </div>
+            <div class="p-group-stuff" data-bind="visible: Projects().length === 0">
+                Create a new project to continue. 
+            </div>
+            <div class="p-group-stuff">
+                <strong>Users:</strong>
+                <span data-bind="foreach: Users">
+                    <span data-bind="text: UserId"></span>
+                </span>
+            </div>
+            <div class="p-group-stuff" data-bind="visible: Invitations().length > 0">
 
-<h2>Start</h2>
+                <strong>Invitations:</strong>
+                <span data-bind="foreach: Invitations">
+                    <span data-bind="text: EmailAddress"></span>&nbsp;(<a href="#" data-bind="    click: destroy">Delete</a>)
+                </span>
+            </div>
+
+            <input type="button" class="btn" value="Invite User" data-bind="click: inviteUserClick" />
+            <input type="button" class="btn" value="Create Project" data-bind="click: createProjectClick" />
+
+            <div data-bind="bootstrapModal: { show: invitingUser } ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bind="click: cancelUserInvite" aria-hidden="true">&times;</button>
+                    <h3>Invite User</h3>
+                </div>
+
+                <div class="modal-body">
+                    <label>Email address</label>
+                    <input type="text" placeholder="Email address" data-bind="value: emailAddressInput" />
+                    <p data-bind="validationMessage: emailAddressInput"></p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn" data-bind="click: cancelUserInvite">Cancel</a>
+                    <a href="#" class="btn btn-primary" data-bind="click: addUserClick">OK</a>
+                </div>
+            </div>
+
+            <div data-bind="bootstrapModal: { show: creatingProject } ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bind="click: cancelCreatingProject" aria-hidden="true">&times;</button>
+                    <h3>Create Project</h3>
+                </div>
+
+                <div class="modal-body">
+                    <label>Project Name</label>
+                    <input type="text" placeholder="Project Name" data-bind="value: projectNameInput" />
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn" data-bind="click: cancelCreatingProject">Cancel</a>
+                    <a href="#" class="btn btn-primary" data-bind="click: addProjectClick">OK</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- /ko  -->
+</div>
+<div style="display: none;" data-bind="visible: organizations().length === 0 && rendered">
+    It looks like you're just getting started. Create a new organization to continue!
+</div>
+<input type="button" class="btn" value="New Organization" data-bind="click: newOrganizationClick" />
+
+<div style="display: none;" data-bind="bootstrapModal: { show: editingOrganization } ">
+    <div class="modal-header">
+        <button type="button" class="close" data-bind="click: cancelOrganizationForm" aria-hidden="true">&times;</button>
+        <h3>New Organization</h3>
+    </div>
+
+    <div class="modal-body">
+        <label>Organization name</label>
+        <input type="text" placeholder="Organization name" data-bind="value: organizationNameInput" /><br />
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-bind="click: cancelOrganizationForm">Cancel</a>
+        <a href="#" class="btn btn-primary" data-bind="click: organizationSubmit">OK</a>
+    </div>
+</div>
+
+
+
+
+
+
+
+@section scripts
+{
+    <script type="text/javascript" src="~/Scripts/knockout-2.2.0.debug.js"> </script>
+    <script type="text/javascript" src="~/Scripts/q.js"> </script>
+    @*<script type="text/javascript" src="~/Scripts/require.js"></script>*@
+    <script type="text/javascript" src="~/Scripts/toastr.js"> </script>
+    @*    <script type="text/javascript" src="~/Scripts/Proofted/logger.js"></script>
+    <script type="text/javascript" src="~/Scripts/breeze.debug.js"></script>*@
+    <script type="text/javascript" src="~/Scripts/knockout.validation.js"></script>
+    <script data-main="Scripts/Proofted/main" src="~/Scripts/require.js"> </script>
+
+    <script type="text/javascript">
+
+        ko.validation.configure({
+            registerExtenders: true,
+            messagesOnModified: true,
+            insertMessages: true,
+            parseInputAttributes: true,
+            messageTemplate: null,
+            errorMessageClass: "error",
+            decorateElement: true,
+            errorElementClass: 'error'
+        });
+
+        ko.bindingHandlers.bootstrapModal = {
+            init: function (element) {
+                ko.utils.toggleDomNodeCssClass(element, "modal hide", true);
+                $(element).modal({ "backdrop": "static", keyboard: false, show: false });
+            },
+            update: function (element, valueAccessor) {
+                var props = valueAccessor();
+                $(element).modal(props.show() ? 'show' : 'hide');
+            }
+        };
+    </script>
+}
