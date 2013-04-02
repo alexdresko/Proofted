@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace Proofted.Web.Controllers
 {
-    public class StartController : Controller
+	public partial class StartController : Controller
     {
         //
         // GET: /Start/
 
-        public ActionResult Index()
+		public virtual ActionResult Index()
         {
             return View();
         }

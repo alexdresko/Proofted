@@ -1,14 +1,5 @@
-//define(function(require) {
-//    var breeze = require('breeze'),
-//        serviceName = 'breeze/startapi',
-//        manager = new breeze.EntityManager(serviceName);
-
-//    var logger = require('logger');
 define(['ko', 'breeze', 'logger'], function (ko, breeze, logger) {
     var serviceName = 'breeze/startapi';
-
-    // *** Cross origin service example  ***
-    //var serviceName = 'http://todo.breezejs.com/api/todos'; // controller in different origin
 
     var manager = new breeze.EntityManager(serviceName);
 
@@ -25,8 +16,8 @@ define(['ko', 'breeze', 'logger'], function (ko, breeze, logger) {
         return manager.createEntity("Organization");
     }
     
-    function createInvitation() {
-        return manager.createEntity("Invitation");
+    function createInvitation(initialValues) {
+        return manager.createEntity("Invitation", initialValues);
     }
     
     function createProject() {

@@ -12,7 +12,7 @@
 
 	[Authorize]
 	[InitializeSimpleMembership]
-	public class AccountController : Controller
+	public partial class AccountController : Controller
 	{
 		// GET: /Account/Login
 		#region Constructors and Destructors
@@ -57,7 +57,7 @@
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Disassociate(string provider, string providerUserId)
+		public virtual ActionResult Disassociate(string provider, string providerUserId)
 		{
 			var ownerAccount = _oAuthWebSecurity.GetUserName(provider, providerUserId);
 			ManageMessageId? message = null;
@@ -89,14 +89,14 @@
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
-		public ActionResult ExternalLogin(string provider, string returnUrl)
+		public virtual ActionResult ExternalLogin(string provider, string returnUrl)
 		{
 			return new ExternalLoginResult(provider, this.Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
 		}
 
 		// GET: /Account/ExternalLoginCallback
 		[AllowAnonymous]
-		public ActionResult ExternalLoginCallback(string returnUrl)
+		public virtual ActionResult ExternalLoginCallback(string returnUrl)
 		{
 			var result =
 				_oAuthWebSecurity.VerifyAuthentication(this.Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
@@ -132,7 +132,7 @@
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
-		public ActionResult ExternalLoginConfirmation(RegisterExternalLoginModel model, string returnUrl)
+		public virtual ActionResult ExternalLoginConfirmation(RegisterExternalLoginModel model, string returnUrl)
 		{
 			string provider = null;
 			string providerUserId = null;
@@ -176,14 +176,14 @@
 
 		// GET: /Account/ExternalLoginFailure
 		[AllowAnonymous]
-		public ActionResult ExternalLoginFailure()
+		public virtual ActionResult ExternalLoginFailure()
 		{
 			return this.View();
 		}
 
 		[AllowAnonymous]
 		[ChildActionOnly]
-		public ActionResult ExternalLoginsList(string returnUrl)
+		public virtual ActionResult ExternalLoginsList(string returnUrl)
 		{
 			this.ViewBag.ReturnUrl = returnUrl;
 			return this.PartialView("_ExternalLoginsListPartial", _oAuthWebSecurity.RegisteredClientData);
@@ -191,7 +191,7 @@
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult LogOff()
+		public virtual ActionResult LogOff()
 		{
 			_webSecurity.Logout();
 
@@ -199,7 +199,7 @@
 		}
 
 		[AllowAnonymous]
-		public ActionResult Login(string returnUrl)
+		public virtual ActionResult Login(string returnUrl)
 		{
 			this.ViewBag.ReturnUrl = returnUrl;
 			return this.View();
@@ -209,7 +209,7 @@
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
-		public ActionResult Login(LoginModel model, string returnUrl)
+		public virtual ActionResult Login(LoginModel model, string returnUrl)
 		{
 			if (this.ModelState.IsValid && _webSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
 			{
@@ -221,7 +221,7 @@
 			return View(model);
 		}
 
-		public ActionResult Manage(ManageMessageId? message)
+		public virtual ActionResult Manage(ManageMessageId? message)
 		{
 			this.ViewBag.StatusMessage = message == ManageMessageId.ChangePasswordSuccess
 				                             ? "Your password has been changed."
@@ -238,7 +238,7 @@
 		// POST: /Account/Manage
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Manage(LocalPasswordModel model)
+		public virtual ActionResult Manage(LocalPasswordModel model)
 		{
 			var hasLocalAccount = _oAuthWebSecurity.HasLocalAccount(_webSecurity.GetUserId(this.User.Identity.Name));
 			this.ViewBag.HasLocalPassword = hasLocalAccount;
@@ -298,7 +298,7 @@
 		}
 
 		[AllowAnonymous]
-		public ActionResult Register()
+		public virtual ActionResult Register()
 		{
 			return this.View();
 		}
@@ -307,7 +307,7 @@
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
-		public ActionResult Register(RegisterModel model)
+		public virtual ActionResult Register(RegisterModel model)
 		{
 			if (this.ModelState.IsValid)
 			{
@@ -329,7 +329,7 @@
 		}
 
 		[ChildActionOnly]
-		public ActionResult RemoveExternalLogins()
+		public virtual ActionResult RemoveExternalLogins()
 		{
 			var accounts = _oAuthWebSecurity.GetAccountsFromUserName(this.User.Identity.Name);
 			var externalLogins = new List<ExternalLogin>();

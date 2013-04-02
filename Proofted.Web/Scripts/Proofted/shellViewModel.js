@@ -78,8 +78,7 @@
 		    organization.addUserClick = function () {
 		        if (organization.invitationErrors().length == 0) {
 		            organization.invitingUser(false);
-		            var invitation = dataservice.createInvitation();
-		            invitation.EmailAddress(organization.emailAddressInput());
+		            var invitation = dataservice.createInvitation({ EmailAddress: organization.emailAddressInput() });
 
 		            if (invitation.entityAspect.validateEntity()) {
 		                extendInvitation(invitation);

@@ -9,7 +9,7 @@
 
 		public static void RegisterBundles(BundleCollection bundles)
 		{
-			bundles.Add(new ScriptBundle("~/bundles/bootstrap.min").Include("~/Scripts/bootstrap/vendor/bootstrap.js"));
+			bundles.Add(new ScriptBundle("~/bundles/bootstrap.min").Include("~/Scripts/bootstrap.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-{version}.js"));
 
@@ -24,8 +24,8 @@
 
 			bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 			bundles.Add(
-				new StyleBundle("~/Content/bootstrapresponsivemin").Include("~/content/bootstrap/bootstrap-responsive.css"));
-			bundles.Add(new StyleBundle("~/Content/bootstrap.min").Include("~/content/bootstrap/bootstrap.css"));
+				new StyleBundle("~/Content/bootstrapresponsivemin").Include("~/content/bootstrap-responsive.css"));
+			bundles.Add(new StyleBundle("~/Content/bootstrap.min").Include("~/content/bootstrap.css"));
 
 			bundles.Add(
 				new StyleBundle("~/Content/themes/base/css").Include(

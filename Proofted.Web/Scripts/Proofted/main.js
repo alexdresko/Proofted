@@ -1,22 +1,4 @@
-﻿//requirejs.config(
-//    {
-//        // well-know paths to selected scripts
-//        paths: {
-//            'breeze': '../breeze.debug'
-//        }
-//    }
-//);
-
-//define(['logger', 'breeze'], function(logger) {
-
-//    logger.info('Breeze Todo is booting');
-
-//    require(['shellViewModel'],        
-//        function(shellViewModel) {
-//            ko.applyBindings(shellViewModel);
-
-//        });
-//});
+﻿
 
 (function (root) {
 

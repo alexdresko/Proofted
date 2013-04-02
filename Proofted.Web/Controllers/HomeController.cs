@@ -2,23 +2,23 @@
 {
 	using System.Web.Mvc;
 	[AllowAnonymous]
-	public class HomeController : Controller
+	public partial class HomeController : Controller
 	{
 		#region Public Methods and Operators
 
-		public ActionResult About()
+		public virtual ActionResult About()
 		{
 			return this.View();
 		}
 
-		public ActionResult Contact()
+		public virtual ActionResult Contact()
 		{
 			this.ViewBag.Message = "Your contact page.";
 
 			return this.View();
 		}
 
-		public ActionResult Index()
+		public virtual ActionResult Index()
 		{
 			if (Request.IsAuthenticated)
 			{

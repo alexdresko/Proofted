@@ -31,7 +31,7 @@
                     timeOut: 5000, // Set timeOut to 0 to make it sticky
                     titleClass: 'toast-title',
                     messageClass: 'toast-message',
-                    target: $('body')
+                    target: 'body'
                 },
 
                 error = function (message, title, optionsOverride) {
@@ -57,8 +57,6 @@
                         options = getOptions(),
                         iconClass = map.iconClass || options.iconClass;
 
-                    if (!$container) { getContainer(options) };
-
                     if (typeof (map.optionsOverride) !== 'undefined') {
                         options = $.extend(options, map.optionsOverride);
                         iconClass = map.optionsOverride.iconClass || iconClass;
@@ -66,6 +64,7 @@
 
                     var
                         intervalId = null,
+                        $container = getContainer(options),
                         $toastElement = $('<div/>'),
                         $titleElement = $('<div/>'),
                         $messageElement = $('<div/>'),
@@ -171,7 +170,7 @@
                 info: info,
                 options: {},
                 success: success,
-                version: '1.2.0',
+                version: '1.2.2',
                 warning: warning
             };
 

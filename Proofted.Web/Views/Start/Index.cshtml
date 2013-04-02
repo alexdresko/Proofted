@@ -39,9 +39,10 @@
                 </div>
 
                 <div class="modal-body">
-                    <label>Email address</label>
-                    <input type="text" placeholder="Email address" data-bind="value: emailAddressInput" />
-                    <p data-bind="validationMessage: emailAddressInput"></p>
+                    <div class="control-group" data-bind="validationElement: emailAddressInput">
+                        <label>Email address</label>
+                        <input type="text" placeholder="Email address" data-bind="value: emailAddressInput" />
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="btn" data-bind="click: cancelUserInvite">Cancel</a>
@@ -116,7 +117,7 @@
             insertMessages: true,
             parseInputAttributes: true,
             messageTemplate: null,
-            errorMessageClass: "error",
+            errorMessageClass: "help-inline",
             decorateElement: true,
             errorElementClass: 'error'
         });
