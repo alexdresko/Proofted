@@ -118,12 +118,32 @@ namespace Links
             private const string URLPATH = "~/Scripts/Proofted";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string Common_ts = Url("Common.ts");
+            public static readonly string Common_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Common.min.js") ? Url("Common.min.js") : Url("Common.js");
+                          
+            public static readonly string Common_js_map = Url("Common.js.map");
+            public static readonly string Common_min_js = Url("Common.min.js");
             public static readonly string dataservice_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/dataservice.min.js") ? Url("dataservice.min.js") : Url("dataservice.js");
                           
+            public static readonly string ko_ts = Url("ko.ts");
+            public static readonly string KO_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/KO.min.js") ? Url("KO.min.js") : Url("KO.js");
+                          
+            public static readonly string KO_js_map = Url("KO.js.map");
+            public static readonly string KO_min_js = Url("KO.min.js");
             public static readonly string logger_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/logger.min.js") ? Url("logger.min.js") : Url("logger.js");
                           
+            public static readonly string Logger2_ts = Url("Logger2.ts");
+            public static readonly string Logger2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Logger2.min.js") ? Url("Logger2.min.js") : Url("Logger2.js");
+                          
+            public static readonly string Logger2_js_map = Url("Logger2.js.map");
+            public static readonly string Logger2_min_js = Url("Logger2.min.js");
             public static readonly string main_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/main.min.js") ? Url("main.min.js") : Url("main.js");
                           
+            public static readonly string Main2_ts = Url("Main2.ts");
+            public static readonly string Main2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Main2.min.js") ? Url("Main2.min.js") : Url("Main2.js");
+                          
+            public static readonly string Main2_js_map = Url("Main2.js.map");
+            public static readonly string Main2_min_js = Url("Main2.min.js");
             public static readonly string shellViewModel_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/shellViewModel.min.js") ? Url("shellViewModel.min.js") : Url("shellViewModel.js");
                           
         }
@@ -138,6 +158,45 @@ namespace Links
         public static readonly string toastr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/toastr.min.js") ? Url("toastr.min.js") : Url("toastr.js");
                       
         public static readonly string toastr_min_js = Url("toastr.min.js");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class typings {
+            private const string URLPATH = "~/Scripts/typings";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class jquery {
+                private const string URLPATH = "~/Scripts/typings/jquery";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string jquery_d_ts = Url("jquery.d.ts");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class knockout {
+                private const string URLPATH = "~/Scripts/typings/knockout";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string knockout_d_ts = Url("knockout.d.ts");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class requirejs {
+                private const string URLPATH = "~/Scripts/typings/requirejs";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string require_d_ts = Url("require.d.ts");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class toastr {
+                private const string URLPATH = "~/Scripts/typings/toastr";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string toastr_d_ts = Url("toastr.d.ts");
+            }
+        
+        }
+    
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

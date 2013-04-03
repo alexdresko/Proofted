@@ -63,12 +63,13 @@
             </footer>
 
         </div> <!-- /container -->
-
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap.min")
 
         <!--<script src="~/js/vendor/bootstrap.min.js"></script>-->
 
         @RenderSection("scripts", required: false)
+        <script type="text/javascript" src="~/Scripts/require.js" data-main="scripts/proofted/common"></script>
+
     </body>
 </html>

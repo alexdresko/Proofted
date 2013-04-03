@@ -729,19 +729,65 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\knockout.validation.debug.js" />
     <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Proofted\Common.js.map">
+      <DependentUpon>Common.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Proofted\KO.js.map">
+      <DependentUpon>ko.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\Proofted\ko.ts" />
+    <Content Include="Scripts\Proofted\KO.js">
+      <DependentUpon>ko.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Proofted\KO.min.js">
+      <DependentUpon>ko.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Proofted\Logger2.js.map">
+      <DependentUpon>Logger2.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Proofted\Main2.js.map">
+      <DependentUpon>Main2.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\Proofted\Logger2.ts" />
+    <Content Include="Scripts\Proofted\Logger2.js">
+      <DependentUpon>Logger2.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Proofted\Logger2.min.js">
+      <DependentUpon>Logger2.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Proofted\Main2.js">
+      <DependentUpon>Main2.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Proofted\Main2.min.js">
+      <DependentUpon>Main2.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\Proofted\Common.ts" />
+    <Content Include="Scripts\Proofted\Common.js">
+      <DependentUpon>Common.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Proofted\Common.min.js">
+      <DependentUpon>Common.ts</DependentUpon>
+    </Content>
     <Content Include="Scripts\Proofted\dataservice.js" />
     <Content Include="Scripts\Proofted\logger.js" />
     <Content Include="Scripts\Proofted\main.js" />
     <Content Include="Scripts\Proofted\shellViewModel.js" />
+    <TypeScriptCompile Include="Scripts\Proofted\Main2.ts" />
     <Content Include="Scripts\q.js" />
     <Content Include="Scripts\q.min.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\typings\jquery\jquery.d.ts" />
+    <Content Include="Scripts\typings\knockout\knockout.d.ts" />
+    <Content Include="Scripts\typings\requirejs\require.d.ts" />
+    <Content Include="Scripts\typings\toastr\toastr.d.ts" />
     <Content Include="T4MVC.tt.settings.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
