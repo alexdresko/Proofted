@@ -7,19 +7,16 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>@ViewBag.Title - Proofted</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <!--<link rel="stylesheet" href="~/css/bootstrap.min.css">-->
-        @Styles.Render("~/Content/bootstrap.min", "~/Content/css")
+        @Styles.Render("~/Content/bootstrap.min", "~/Content/bootstrapresponsivemin", "~/Content/css")
         <style>
             body {
                 padding-top: 60px;
                 padding-bottom: 40px;
             }
         </style>
-        <!--<link rel="stylesheet" href="~/css/bootstrap-responsive.min.css">-->
-        @Styles.Render("~/Content/bootstrapresponsivemin", "~/Content/css")
         <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
         @Scripts.Render("~/bundles/modernizr")
         <!--<script src="~/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>-->
@@ -36,14 +33,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    @Html.ActionLink("Proofted", "Index", "Home", null, new { @class="brand"})
-                    <!--<a class="brand" href="#">Project name</a>-->
+                    @Html.ActionLink("Proofted", MVC.Home.Index(), new { @class="brand"})
                     <div class="nav-collapse collapse">
-                        <ul class="nav">
- @*                             <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
-                          <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                        </ul>
                         <ul class="nav pull-right">
                             @Html.Partial("_LoginPartial")
                         </ul>
@@ -63,13 +54,9 @@
             </footer>
 
         </div> <!-- /container -->
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap.min")
-
-        <!--<script src="~/js/vendor/bootstrap.min.js"></script>-->
+        @Scripts.Render("~/bundles/errorHandler", "~/bundles/jquery", "~/bundles/bootstrap.min")
 
         @RenderSection("scripts", required: false)
-        <script type="text/javascript" src="~/Scripts/require.js" data-main="scripts/proofted/common"></script>
 
     </body>
 </html>

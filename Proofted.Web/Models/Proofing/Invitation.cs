@@ -3,6 +3,9 @@
 	using System;
 	using System.ComponentModel.DataAnnotations;
 
+	using T4TS;
+
+	[TypeScriptInterface]
 	public class Invitation
 	{
 		public int InvitationId { get; set; }
@@ -17,19 +20,5 @@
 		public string Guid { get; set; }
 
 		public bool Used { get; set; }
-	}
-
-	public class TestValidatorAttribute : ValidationAttribute
-	{
-		public override bool IsValid(object value)
-		{
-			var stringValue = value as string;
-			if (!string.IsNullOrWhiteSpace(stringValue))
-			{
-				return !stringValue.ToLower().Contains("2");
-			}
-
-			return true;
-		}
 	}
 }

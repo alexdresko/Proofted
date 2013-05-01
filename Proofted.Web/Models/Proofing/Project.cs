@@ -2,6 +2,9 @@
 {
 	using System.Collections.Generic;
 
+	using T4TS;
+
+	[TypeScriptInterface]
 	public class Project
 	{
 		#region Public Properties

@@ -1,29 +1,20 @@
-define(["require", "exports", "Logger2"], function(require, exports, __logger__) {
-    require.config({
-        paths: {
-            "breeze": "../breeze.debug",
-            "jQuery": "../jquery-1.9.1",
-            "bootstrap": "../bootstrap",
-            "ko": "../knockout-2.2.0"
-        },
-        shim: {
-            "jQuery": {
-                deps: [],
-                init: function () {
-                    return $;
-                }
-            }
-        }
-    });
+define(["require", "exports", "Logger2", "Configure", "KoModal"], function(require, exports, __logger__, __configure__, __modal__) {
     var logger = __logger__;
 
-    
+    var configure = __configure__;
+
+    var modal = __modal__;
+
     (function (Proofted) {
+        configure.Proofted.Configuration.Configure();
+        modal.Proofted.Knockout.Modal.Setup();
         logger.Proofted.Logger.info("Prooted is booting");
         require([
-            'shellViewModel'
+            'shellViewModel2'
         ], function (shellViewModel) {
-            ko.applyBindings(shellViewModel);
+            var model = new shellViewModel.Proofted.ShellViewModel();
+            model.getAllOrganizations();
+            ko.applyBindings(model);
         });
     })(exports.Proofted || (exports.Proofted = {}));
     var Proofted = exports.Proofted;

@@ -34,7 +34,9 @@
 
 	    public DbSet<Approver> Approvers { get; set; }
 
-        public static T Borrow<T>(Func<ProoftedDbContext, T> func)
+		public DbSet<Log> Logs { get; set; }
+
+		public static T Borrow<T>(Func<ProoftedDbContext, T> func)
         {
             using (var context = new ProoftedDbContext())
             {

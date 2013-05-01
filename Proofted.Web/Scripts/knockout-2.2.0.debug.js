@@ -1026,8 +1026,7 @@ ko.hasPrototype = function(instance, prototype) {
     if (instance[protoProperty] === prototype) return true;
     return ko.hasPrototype(instance[protoProperty], prototype); // Walk the prototype chain
 };
-
-ko.isObservable = function (instance) {
+	ko.isObservable = function (instance) {
     return ko.hasPrototype(instance, ko.observable);
 }
 ko.isWriteableObservable = function (instance) {

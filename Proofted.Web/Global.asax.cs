@@ -1,43 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
-
-namespace Proofted.Web
+﻿namespace Proofted.Web
 {
-    using System.Data.Entity;
-    using System.Web.DynamicData;
+	using System.Web;
+	using System.Web.Http;
+	using System.Web.Mvc;
+	using System.Web.Optimization;
+	using System.Web.Routing;
 
-    using Proofted.Web.App_Start;
-    using Proofted.Web.Models;
+	using Proofted.Web.App_Start;
 
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
+	// Note: For instructions on enabling IIS6 or IIS7 classic mode, 
+	// visit http://go.microsoft.com/?LinkId=9394801
+	public class MvcApplication : HttpApplication
+	{
+		#region Methods
 
-    public class MvcApplication : System.Web.HttpApplication
-    {
-        static MvcApplication()
-        {
-            DefaultModel = new MetaModel();
-        }
+		protected void Application_Start()
+		{
+			AreaRegistration.RegisterAllAreas();
 
-        public static MetaModel DefaultModel { get; private set; }
+			WebApiConfig.Register(GlobalConfiguration.Configuration);
+			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+			RouteConfig.RegisterRoutes(RouteTable.Routes);
+			BundleConfig.RegisterBundles(BundleTable.Bundles);
+			AuthConfig.RegisterAuth();
+		}
 
-        protected void Application_Start()
-        {
-            DynamicData2.Register(RouteTable.Routes);
-
-            AreaRegistration.RegisterAllAreas();
-
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AuthConfig.RegisterAuth();
-        }
-    }
+		#endregion
+	}
 }
